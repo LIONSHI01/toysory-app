@@ -1,0 +1,55 @@
+.navbar {
+  // background-color: orangered;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5rem;
+
+  a {
+    text-decoration: none;
+  }
+
+  &__logoBox {
+    // width: 2rem;
+    // height: 2rem;
+  }
+
+  &__logo {
+    display: block;
+  }
+
+  &__links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    font-size: var(--default-fs);
+  }
+
+  &__link {
+  }
+
+  &__authentication {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__link,
+  &__login,
+  &__register {
+    &:link,
+    &:visited {
+      color: var(--black);
+      font-weight: 500;
+    }
+    &:hover,
+    &:active {
+      color: var(--black-light-2);
+    }
+  }
+
+  &__login {
+  }
+
+  &__register {
+  }
+}

@@ -2,25 +2,72 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+html {
+  font-size: 62.5%;
 }
 
-* {
+body {
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* COLOR */
+  --blue: #08d9d6;
+  --blue-light: #39e1de;
+  --blue-dark: #06aeab;
+
+  --red: #ff2e63;
+  --red-light: #ff5882;
+  --red-dark: #cc254f;
+
+  /* for Font color --black */
+  --black: #252a34;
+  --black-light: #51555d;
+  --black-light-2: #666a71;
+  --black-dark: #1e222a;
+
+  --grey-light-1: #eaeaea;
+  --grey-light-2: #eeeeee;
+
+  --grey-dark-1: #5c5c5c;
+  --grey-dark-2: #474747;
+  --grey-dark-3: #333;
+
+  /* FONT */
+  --fs-ss: 1.2rem;
+  --fs-s: 1.6rem;
+  --default-fs: 1.8rem;
+  --fs-x: 2rem;
+  --fs-xl: 2.4rem;
+  --fs-xxl: 3.5rem;
+
+  /* MARGIN */
+  --mb-ss: 0.5rem;
+  --mb-s: 1rem;
+  --mb-m: 2.5rem;
+  --mb-x: 5rem;
+  --mb-xl: 8rem;
+  --mb-xxl: 10rem;
+
+  /* PADDING */
+
+  /* BOX SHADOW */
+  --box-shadow-s: 0 0.5rem 5rem rgba(0, 0, 0, 0.1);
+  --box-shadow-m: 0 1rem 5rem rgba(0, 0, 0, 0.15);
+}
+
+.container {
+  max-width: 114rem;
+  margin: 0 auto;
 }
