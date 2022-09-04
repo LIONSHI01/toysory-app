@@ -7,7 +7,7 @@ import logoImg from "../../../assets/brand/logo.png";
 
 const Navbar = () => {
   return (
-    <div className={styles.navbar}>
+    <nav className={styles.navbar}>
       <Link href="/" className={styles.navbar__logoBox}>
         <Image
           src={logoImg}
@@ -55,7 +55,7 @@ const Navbar = () => {
           </div>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 };
 
