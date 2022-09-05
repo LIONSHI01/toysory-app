@@ -59,6 +59,8 @@ body {
   --white: #fff;
 
   /* FONT */
+  --ff-title: serif;
+
   --fs-ss: 1.2rem;
   --fs-s: 1.6rem;
   --default-fs: 1.8rem;
@@ -72,7 +74,7 @@ body {
   --mb-m: 2.5rem;
   --mb-x: 5rem;
   --mb-xl: 8rem;
-  --mb-xxl: 10rem;
+  --mb-xxl: 9rem;
 
   /* PADDING */
 

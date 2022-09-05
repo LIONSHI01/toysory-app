@@ -1,8 +1,22 @@
 .heading {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 1rem;
+  margin-top: var(--mb-m);
+
   &__primary {
+    font-family: var(--ff-title);
+    font-size: var(--fs-xxl);
+    font-weight: 500;
+    // text-transform: uppercase;
+    color: var(--black-light-2);
+    letter-spacing: 1.8px;
   }
 
   &__secondary {
+    font-size: var(--fs-s);
+    color: var(--black);
   }
 }
 .main {
@@ -15,15 +29,22 @@
 }
 
 .product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5rem 0;
+
   &__category {
+    align-self: flex-start;
   }
 
   &__category_title {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
 
     font-size: var(--default-fs);
+    font-weight: 500;
     margin-bottom: var(--mb-x);
   }
 
@@ -66,9 +87,9 @@
   &__name {
     font-size: var(--fs-x);
     font-weight: 400;
-    padding: 0.5rem 0;
-    border-top: 1px solid var(--grey-light-1);
-    border-bottom: 1px solid var(--grey-light-1);
+    padding: 1rem 0;
+    border-top: 2px solid var(--grey-light-1);
+    border-bottom: 2px solid var(--grey-light-1);
     color: var(--black);
   }
 
@@ -93,7 +114,7 @@
       border: 1px solid var(--black-light-3);
       padding: 3px 5px;
       font-family: inherit;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--black);
       width: 50%;
 
@@ -161,7 +182,7 @@
       justify-content: center;
       gap: 0.8rem;
       cursor: pointer;
-      padding: 0.8rem 0;
+      padding: 1rem 0;
 
       font-size: var(--fs-s);
       font-weight: 500;
@@ -202,5 +223,50 @@
     &:hover {
       background-color: var(--red);
     }
+  }
+}
+
+.details {
+  margin: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--black-light-3);
+  border-bottom: 1px solid var(--black-light-3);
+
+  &__heading {
+    align-self: center;
+    background-color: var(--white);
+    padding: 0 3rem;
+    margin-bottom: var(--mb-m);
+
+    text-transform: uppercase;
+    font-size: var(--fs-s);
+    font-weight: 500;
+    color: var(--black-light-2);
+    transform: translateY(-50%);
+  }
+
+  &__desc {
+    width: 50%;
+    margin-bottom: var(--mb-m);
+
+    font-size: var(--fs-s);
+    color: var(--black-light-2);
+    line-height: 1.7;
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  &__imageGroup {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: var(--mb-x);
+  }
+
+  &__imageBox {
+    width: 100%;
   }
 }

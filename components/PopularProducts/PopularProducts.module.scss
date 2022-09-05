@@ -22,8 +22,11 @@
   }
 
   &__heading {
-    font-size: var(--fs-x);
+    font-family: var(--ff-title);
+    letter-spacing: 1.8px;
+    font-size: var(--fs-xl);
     font-weight: 400;
+    color: var(--black-light-2);
     margin-bottom: var(--mb-ss);
     text-transform: uppercase;
   }

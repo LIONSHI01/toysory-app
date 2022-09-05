@@ -9,14 +9,13 @@ import {
   BsFillBagCheckFill,
   BsCartCheckFill,
 } from "react-icons/bs";
-import { HiShoppingCart } from "react-icons/hi";
-
-// import { BsFillBagCheckFill } from "react-icons/io";
 
 import Hero from "../../components/Hero/Hero";
 import ProductBanner from "../../assets/img/hero-2.jpg";
 
 import PdImg from "../../assets/img/products/product-01/4.jpg";
+import PdImg2 from "../../assets/img/products/product-01/1.jpg";
+import PdImg3 from "../../assets/img/products/product-01/3.jpg";
 import styles from "./index.module.scss";
 
 const index = () => {
@@ -27,7 +26,9 @@ const index = () => {
         <div className="container">
           <div className={styles.heading}>
             <h2 className={styles.heading__primary}>Shopping</h2>
-            <span className={styles.heading__secondary}>Product Details</span>
+            <span className={styles.heading__secondary}>
+              /-Product Details-/
+            </span>
           </div>
         </div>
       </header>
@@ -61,6 +62,9 @@ const index = () => {
                 <div className={styles.intro__specifications}>
                   <span>Specifications :</span>
                   <select name="specs" id="specs">
+                    <option selected disabled value="">
+                      Please select type
+                    </option>
                     <option value="VALUE-1">VALUE 1</option>
                     <option value="VALUE-2">VALUE 2</option>
                     <option value="VALUE-3">VALUE 3</option>
@@ -105,6 +109,36 @@ const index = () => {
                 </div>
               </div>
             </div>
+            <div className={styles.details}>
+              <div className={styles.details__heading}>Details</div>
+              <p className={styles.details__desc}>
+                <span>Description:</span>
+                <br />
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Obcaecati quaerat exercitationem unde saepe, eius voluptatem
+                sunt magnam temporibus rerum, minus natus inventore libero quia
+                nam voluptates ab veritatis veniam? Ut!
+              </p>
+              <div className={styles.details__imageGroup}>
+                <div className={styles.details__imageBox}>
+                  <Image
+                    src={PdImg2}
+                    alt="Product Name image"
+                    objectFit="contain"
+                  />
+                </div>
+                <div className={styles.details__imageBox}>
+                  <Image
+                    src={PdImg3}
+                    alt="Product Name image"
+                    objectFit="contain"
+                  />
+                </div>
+              </div>
+            </div>
+            <Link href="/">
+              <a className={`btn`}>back</a>
+            </Link>
           </section>
         </main>
       </div>
