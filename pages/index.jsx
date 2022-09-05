@@ -1,7 +1,9 @@
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 
+import AboutBox from "../components/AboutBox/AboutBox";
 import heroImage from "../assets/img/hero.jpg";
+import PopulartProducts from "../components/PopularProducts/PopulartProducts";
 
 export default function Home() {
   return (
@@ -21,6 +23,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <AboutBox />
+      <PopulartProducts />
     </main>
   );
 }

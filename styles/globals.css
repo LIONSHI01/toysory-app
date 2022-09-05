@@ -18,8 +18,6 @@ body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 
-  line-height: 1.7;
-
   width: 100%;
   margin: 0;
   padding: 0;
@@ -48,6 +46,7 @@ body {
   --black: #252a34;
   --black-light: #51555d;
   --black-light-2: #666a71;
+  --black-light-3: #d3d4d6;
   --black-dark: #1e222a;
 
   --grey-light-1: #eaeaea;
@@ -56,6 +55,8 @@ body {
   --grey-dark-1: #5c5c5c;
   --grey-dark-2: #474747;
   --grey-dark-3: #333;
+
+  --white: #fff;
 
   /* FONT */
   --fs-ss: 1.2rem;

@@ -1,0 +1,10 @@
+.popularProducts {
+  margin: 10rem 0;
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, max-content));
+    // gap: 1rem;
+    justify-content: space-between;
+  }
+}
