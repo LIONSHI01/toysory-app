@@ -1,6 +1,6 @@
 .about {
   // margin: 10rem 0;
-  padding: 15rem 0;
+  padding: 10rem 0;
   border-bottom: 5px solid var(--black-light-3);
 
   &__container {
@@ -31,6 +31,7 @@
     font-size: var(--default-fs);
     margin-bottom: var(--mb-s);
     color: var(--black-light-2);
+    line-height: 1.7;
   }
 
   &__about_us {

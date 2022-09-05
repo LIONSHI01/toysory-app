@@ -1,17 +1,18 @@
 .navbar {
-  // background-color: orangered;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 5rem;
+  padding: 2.5rem 0;
 
   a {
     text-decoration: none;
   }
 
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   &__logoBox {
-    // width: 2rem;
-    // height: 2rem;
+    width: 6rem;
   }
 
   &__logo {
@@ -40,6 +41,7 @@
     &:visited {
       color: var(--black);
       font-weight: 500;
+      text-transform: uppercase;
     }
     &:hover,
     &:active {

@@ -9,6 +9,9 @@
   &:hover &__image::after {
     opacity: 0.2;
   }
+  &:hover &__image {
+    // filter: brightness(0.8);
+  }
 
   &:hover &__viewmore {
     transform: translate(-50%, -50%);
@@ -36,9 +39,14 @@
   }
 
   &__viewmore {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     text-transform: uppercase;
+    height: 55%;
+    width: 55%;
+
     position: absolute;
     top: 50%;
     left: 50%;
@@ -46,7 +54,7 @@
     font-size: var(--default-fs);
     font-weight: 700;
     color: var(--white);
-    padding: 4.5rem;
+
     border: 2px solid var(--white);
     border-radius: 50%;
     opacity: 0;

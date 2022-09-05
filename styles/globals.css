@@ -51,10 +51,10 @@ body {
 
   --grey-light-1: #eaeaea;
   --grey-light-2: #eeeeee;
-
+  /* 
   --grey-dark-1: #5c5c5c;
   --grey-dark-2: #474747;
-  --grey-dark-3: #333;
+  --grey-dark-3: #333; */
 
   --white: #fff;
 
@@ -84,4 +84,24 @@ body {
 .container {
   max-width: 144rem;
   margin: 0 auto;
+}
+
+/* <a> button */
+.btn:link,
+.btn:visited {
+  display: inline-block;
+
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: var(--fs-x);
+  font-weight: 700;
+  color: var(--black-light-3);
+  letter-spacing: 8px;
+  transition: all 0.3s;
+}
+
+.btn:hover,
+.btn:active {
+  color: var(--black);
 }

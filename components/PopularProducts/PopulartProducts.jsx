@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 import styles from "./PopularProducts.module.scss";
@@ -7,12 +8,21 @@ const PopulartProducts = () => {
   return (
     <section className={styles.popularProducts}>
       <div className="container">
-        <div className={styles.popularProducts__list}>
-          <ProductPreviewCard />
-          <ProductPreviewCard />
-          <ProductPreviewCard />
-          <ProductPreviewCard />
-          <ProductPreviewCard />
+        <div className={styles.popularProducts__container}>
+          <div className={styles.popularProducts__heading_box}>
+            <h2 className={styles.popularProducts__heading}>Products</h2>
+            <span className={styles.popularProducts__text}>/-Popular-/</span>
+          </div>
+          <div className={styles.popularProducts__list}>
+            <ProductPreviewCard />
+            <ProductPreviewCard />
+            <ProductPreviewCard />
+            <ProductPreviewCard />
+            <ProductPreviewCard />
+          </div>
+          <Link href="/">
+            <a className="btn">More</a>
+          </Link>
         </div>
       </div>
     </section>
