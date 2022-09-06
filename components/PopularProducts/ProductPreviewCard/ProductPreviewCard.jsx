@@ -9,22 +9,21 @@ import { MdShoppingCart } from "react-icons/md";
 import previewImg1 from "../../../assets/img/product-preview/preview-1.jpg";
 
 const ProductPreviewCard = ({ product }) => {
-  const { thumbimage, salePrice, name } = product;
+  const { thumbImage, salePrice, name, slug } = product;
 
-  const thumbImg = urlFor(thumbimage && thumbimage[0]);
-  console.log(urlFor(thumbimage && thumbimage[0]).url());
+  // const thumbImg = urlFor(thumbimage && thumbimage[0]);
+  // console.log(urlFor(thumbimage && thumbimage[0]).url());
   return (
     <>
-      <Link href="/">
+      <Link href={`/product/${slug.current}`}>
         <div className={styles.PreviewCard}>
           <div className={styles.PreviewCard__image}>
             <Image
-              src={urlFor(thumbimage && thumbimage[0]).url()}
+              src={urlFor(thumbImage && thumbImage[0]).url()}
               alt={name}
               height={250}
               width={250}
               objectFit="cover"
-              // layout="fill"
             />
 
             <span className={styles.PreviewCard__viewmore}>View more</span>

@@ -51,8 +51,8 @@ export default {
       type: "string",
     },
     {
-      name: "type",
-      title: "Type",
+      name: "specification",
+      title: "Specification",
       type: "array",
       of: [{ type: "string" }],
     },

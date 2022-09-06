@@ -10,15 +10,26 @@ import {
   BsCartCheckFill,
 } from "react-icons/bs";
 
+import { client, urlFor } from "../../lib/client";
 import Hero from "../../components/Hero/Hero";
 import ProductBanner from "../../assets/img/hero-2.jpg";
 
-import PdImg from "../../assets/img/products/product-01/4.jpg";
-import PdImg2 from "../../assets/img/products/product-01/1.jpg";
-import PdImg3 from "../../assets/img/products/product-01/3.jpg";
+// import PdImg from "../../assets/img/products/product-01/4.jpg";
+// import PdImg2 from "../../assets/img/products/product-01/1.jpg";
+// import PdImg3 from "../../assets/img/products/product-01/3.jpg";
 import styles from "./index.module.scss";
 
-const index = () => {
+const ProductDetails = ({ product, products }) => {
+  const {
+    thumbImage,
+    detailImage,
+    name,
+    originalPrice,
+    salePrice,
+    description,
+    specification,
+  } = product;
+
   return (
     <div>
       <Hero banner={ProductBanner} />
@@ -48,28 +59,40 @@ const index = () => {
             </div>
             <div className={styles.intro}>
               <div className={styles.intro__image}>
-                <Image src={PdImg} objectFit="cover" alt="product name"></Image>
+                <Image
+                  src={urlFor(thumbImage && thumbImage[0]).url()}
+                  // objectFit="cover"
+                  // layout="fill"
+                  width={800}
+                  height={800}
+                  alt="product name"
+                ></Image>
               </div>
               <div className={styles.intro__content}>
-                <h1 className={styles.intro__name}>Product Name</h1>
+                <h1 className={styles.intro__name}>{name}</h1>
                 <span className={styles.intro__setPrice}>
-                  Original Price : HK$ 150
+                  Original Price : HK$ {originalPrice}
                 </span>
                 <span className={styles.intro__salePrice}>
-                  Sale Price : <span>HK$ 120 </span>{" "}
+                  Sale Price : <span>HK$ {salePrice} </span>{" "}
                 </span>
 
-                <div className={styles.intro__specifications}>
-                  <span>Specifications :</span>
-                  <select name="specs" id="specs">
-                    <option defaultValue disabled value="">
-                      Please select type
-                    </option>
-                    <option value="VALUE-1">VALUE 1</option>
-                    <option value="VALUE-2">VALUE 2</option>
-                    <option value="VALUE-3">VALUE 3</option>
-                  </select>
-                </div>
+                {specification?.length >= 1 && (
+                  <div className={styles.intro__specifications}>
+                    <span>Specifications :</span>
+                    <select name="specs" id="specs">
+                      <option defaultValue disabled value="">
+                        Please select type
+                      </option>
+                      {specification.map((spec, i) => (
+                        <option key={i} value={spec}>
+                          {spec}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
                 <div className={styles.intro__amount}>
                   <span>Amount :</span>
                   <span className={styles.intro__minus}>
@@ -114,26 +137,21 @@ const index = () => {
               <p className={styles.details__desc}>
                 <span>Description:</span>
                 <br />
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Obcaecati quaerat exercitationem unde saepe, eius voluptatem
-                sunt magnam temporibus rerum, minus natus inventore libero quia
-                nam voluptates ab veritatis veniam? Ut!
+                {description}
               </p>
               <div className={styles.details__imageGroup}>
-                <div className={styles.details__imageBox}>
-                  <Image
-                    src={PdImg2}
-                    alt="Product Name image"
-                    objectFit="contain"
-                  />
-                </div>
-                <div className={styles.details__imageBox}>
-                  <Image
-                    src={PdImg3}
-                    alt="Product Name image"
-                    objectFit="contain"
-                  />
-                </div>
+                {detailImage?.map((image, i) => (
+                  <div key={i} className={styles.details__imageBox}>
+                    <Image
+                      src={urlFor(image).url()}
+                      width={800}
+                      height={800}
+                      alt={`${name} ${i}`}
+                      objectFit="contain"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
             <Link href="/">
@@ -146,4 +164,40 @@ const index = () => {
   );
 };
 
-export default index;
+export const getStaticPaths = async () => {
+  const query = `*[_type=="product"] {
+    slug{
+      current
+    }
+  }`;
+  const products = await client.fetch(query);
+  const paths = products.map((product) => ({
+    params: {
+      slug: product.slug.current,
+    },
+  }));
+
+  return {
+    paths,
+    fallback: "blocking",
+  };
+};
+
+export const getStaticProps = async ({ params: { slug } }) => {
+  // Fetch ONE product data with slug
+  const query = `*[_type=="product" && slug.current=='${slug}'][0]`;
+  // Fetch ALL products data
+  const productsQuery = '*[_type=="product"]';
+
+  const product = await client.fetch(query);
+  const products = await client.fetch(productsQuery);
+
+  return {
+    props: {
+      product,
+      products,
+    },
+  };
+};
+
+export default ProductDetails;
