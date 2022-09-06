@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { MdSmartToy } from "react-icons/md";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import {
   BsHeartFill,
@@ -14,11 +13,13 @@ import { client, urlFor } from "../../lib/client";
 import Sidebar from "../../components/Navigation/sidebar/Sidebar";
 import Hero from "../../components/Hero/Hero";
 import ProductBanner from "../../assets/img/hero-2.jpg";
+import CategoryBar from "../../components/CategoryBar/CategoryBar";
 
 // import PdImg from "../../assets/img/products/product-01/4.jpg";
 // import PdImg2 from "../../assets/img/products/product-01/1.jpg";
 // import PdImg3 from "../../assets/img/products/product-01/3.jpg";
 import styles from "./product-details.module.scss";
+import Header from "../../components/Header/Header";
 
 const ProductDetails = ({ product, products }) => {
   const {
@@ -34,34 +35,17 @@ const ProductDetails = ({ product, products }) => {
   return (
     <div>
       <Hero banner={ProductBanner} />
-      <header>
-        <div className="container">
-          <div className={styles.heading}>
-            <h2 className={styles.heading__primary}>Shopping</h2>
-            <span className={styles.heading__secondary}>
-              /-Product Details-/
-            </span>
-          </div>
-        </div>
-      </header>
+      <Header primary="Shopping" secondary="Product Details" />
       <div className="container">
-        <main className={styles.main}>
+        <main className={styles.product__main}>
           <Sidebar />
           <section className={styles.product}>
-            <div className={styles.product__category}>
-              <div className={styles.product__category_title}>
-                <div className={styles.product__category_icon_box}>
-                  <MdSmartToy className={styles.product__category_icon} />
-                </div>
-                <span className={styles.product__category_name}>
-                  Category Name
-                </span>
-              </div>
-            </div>
+            <CategoryBar category="Category name" />
+
             <div className={styles.intro}>
               <div className={styles.intro__image}>
                 <Image
-                  src={urlFor(thumbImage && thumbImage[0]).url()}
+                  src={urlFor(thumbImage && thumbImage[0])}
                   // objectFit="cover"
                   // layout="fill"
                   width={800}
@@ -144,7 +128,7 @@ const ProductDetails = ({ product, products }) => {
                 {detailImage?.map((image, i) => (
                   <div key={i} className={styles.details__imageBox}>
                     <Image
-                      src={urlFor(image).url()}
+                      src={urlFor(image)}
                       width={800}
                       height={800}
                       alt={`${name} ${i}`}

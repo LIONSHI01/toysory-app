@@ -27,7 +27,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/product">
                 <a className={styles.navbar__link}>Markeplace</a>
               </Link>
             </li>
