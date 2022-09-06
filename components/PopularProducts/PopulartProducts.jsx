@@ -4,7 +4,7 @@ import React from "react";
 import styles from "./PopularProducts.module.scss";
 import ProductPreviewCard from "./ProductPreviewCard/ProductPreviewCard";
 
-const PopulartProducts = () => {
+const PopularProducts = ({ products }) => {
   return (
     <section className={styles.popularProducts}>
       <div className="container">
@@ -14,11 +14,9 @@ const PopulartProducts = () => {
             <span className={styles.popularProducts__text}>/-Popular-/</span>
           </div>
           <div className={styles.popularProducts__list}>
-            <ProductPreviewCard />
-            <ProductPreviewCard />
-            <ProductPreviewCard />
-            <ProductPreviewCard />
-            <ProductPreviewCard />
+            {products?.map((product) => (
+              <ProductPreviewCard key={product._id} product={product} />
+            ))}
           </div>
           <Link href="/">
             <a className="btn">More</a>
@@ -29,4 +27,4 @@ const PopulartProducts = () => {
   );
 };
 
-export default PopulartProducts;
+export default PopularProducts;

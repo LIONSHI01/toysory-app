@@ -62,7 +62,7 @@ const index = () => {
                 <div className={styles.intro__specifications}>
                   <span>Specifications :</span>
                   <select name="specs" id="specs">
-                    <option selected disabled value="">
+                    <option defaultValue disabled value="">
                       Please select type
                     </option>
                     <option value="VALUE-1">VALUE 1</option>

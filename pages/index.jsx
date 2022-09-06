@@ -1,16 +1,27 @@
-import Image from "next/image";
-import styles from "../styles/Home.module.scss";
+import { client } from "../lib/client";
 
 import AboutBox from "../components/AboutBox/AboutBox";
-import PopulartProducts from "../components/PopularProducts/PopulartProducts";
+import PopularProducts from "../components/PopularProducts/PopulartProducts";
 import Hero from "../components/Hero/Hero";
 
-export default function Home() {
+const Home = ({ products }) => {
   return (
     <main className="main">
+      {console.log(products)}
       <Hero />
       <AboutBox />
-      <PopulartProducts />
+      <PopularProducts products={products} />
     </main>
   );
-}
+};
+
+export const getServerSideProps = async () => {
+  const query = '*[_type=="product"]';
+  const products = await client.fetch(query);
+
+  return {
+    props: { products },
+  };
+};
+
+export default Home;

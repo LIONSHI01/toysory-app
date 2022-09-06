@@ -9,9 +9,6 @@
   &:hover &__image::after {
     opacity: 0.2;
   }
-  &:hover &__image {
-    // filter: brightness(0.8);
-  }
 
   &:hover &__viewmore {
     transform: translate(-50%, -50%);
@@ -20,6 +17,7 @@
 
   &__image {
     position: relative;
+    display: block;
     overflow: hidden;
     width: 100%;
     transition: all 0.2s;
