@@ -11,13 +11,14 @@ import {
 } from "react-icons/bs";
 
 import { client, urlFor } from "../../lib/client";
+import Sidebar from "../../components/Navigation/sidebar/Sidebar";
 import Hero from "../../components/Hero/Hero";
 import ProductBanner from "../../assets/img/hero-2.jpg";
 
 // import PdImg from "../../assets/img/products/product-01/4.jpg";
 // import PdImg2 from "../../assets/img/products/product-01/1.jpg";
 // import PdImg3 from "../../assets/img/products/product-01/3.jpg";
-import styles from "./index.module.scss";
+import styles from "./product-details.module.scss";
 
 const ProductDetails = ({ product, products }) => {
   const {
@@ -45,7 +46,7 @@ const ProductDetails = ({ product, products }) => {
       </header>
       <div className="container">
         <main className={styles.main}>
-          <aside className={styles.sidebar}>SIDE BAR</aside>
+          <Sidebar />
           <section className={styles.product}>
             <div className={styles.product__category}>
               <div className={styles.product__category_title}>

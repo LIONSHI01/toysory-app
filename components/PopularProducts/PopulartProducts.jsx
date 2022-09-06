@@ -18,7 +18,7 @@ const PopularProducts = ({ products }) => {
               <ProductPreviewCard key={product._id} product={product} />
             ))}
           </div>
-          <Link href="/">
+          <Link href="/product">
             <a className="btn">More</a>
           </Link>
         </div>
