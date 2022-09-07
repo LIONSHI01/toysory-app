@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+
+import { selectCartItems } from "../../../store/cart/cart.selector";
+import { addItemToCart } from "../../../store/cart/cart.action";
 
 import { urlFor } from "../../../lib/client";
 
@@ -16,8 +20,14 @@ import { GiMagnifyingGlass } from "react-icons/gi";
 
 // CSS file in /styles folder
 const ProductCard = ({ product }) => {
-  const [isDropdown, setIsDropdown] = useState(false);
+  const dispatch = useDispatch();
   const { thumbImage, salePrice, name, slug } = product;
+
+  const [isDropdown, setIsDropdown] = useState(false);
+
+  const cartItems = useSelector(selectCartItems);
+
+  const addToCart = () => dispatch(addItemToCart(cartItems, product));
 
   return (
     <div className="ProductCard">
@@ -54,7 +64,11 @@ const ProductCard = ({ product }) => {
       </div>
       <div className={`dropdownBox ${isDropdown ? "active" : ""}`}>
         <div className="dropdownBox__shopping_btns">
-          <button type="button" className="dropdownBox__add_to_cart">
+          <button
+            type="button"
+            className="dropdownBox__add_to_cart"
+            onClick={addToCart}
+          >
             <BsCartCheckFill className="dropdownBox__button_icon" />
             <span className="dropdownBox__buttonText">Add to Cart</span>
           </button>

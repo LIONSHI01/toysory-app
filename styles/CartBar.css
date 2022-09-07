@@ -1,5 +1,5 @@
 .cartbar {
-  width: 45rem;
+  width: 50rem;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -16,10 +16,14 @@
   transition: all 0.3s cubic-bezier(0.81, -0.12, 0.35, 1.05);
 
   box-shadow: var(--box-shadow-m);
+  visibility: none;
+  opacity: 0;
 }
 
 .cartbar.open {
   transform: translateX(0%);
+  visibility: visible;
+  opacity: 1;
 }
 
 .cartbar__goback-box {
@@ -42,8 +46,6 @@
   height: 2.5rem;
   color: var(--blue-dark);
 }
-.cartbar__backText {
-}
 
 .cartItemList {
   position: relative;
@@ -60,13 +62,16 @@
   font-weight: 500;
 }
 .cartbar__total {
-  font-size: var(--fs-s);
+  font-size: var(--fs-x);
+  font-weight: 600;
+  color: var(--black-light-2);
+  margin-right: 2rem;
 }
 
 .cartbar__checkout-btn:link,
 .cartbar__checkout-btn:visited {
   justify-self: center;
-  padding: 0.5rem 2.6rem;
+  padding: 0.8rem 4rem;
 
   border-radius: var(--br-m);
   background-color: var(--blue);

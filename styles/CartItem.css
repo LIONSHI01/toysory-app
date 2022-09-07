@@ -82,6 +82,7 @@
   border-left: none;
   border-right: none;
   padding: 2px 0;
+  font-size: var(--fs-s);
 }
 
 .cartItem__qty:focus {
@@ -101,5 +102,5 @@ input::-webkit-inner-spin-button {
 .cartItem__price {
   font-size: var(--fs-s);
   font-weight: 700;
-  color: var(--black);
+  color: var(--black-light-2);
 }

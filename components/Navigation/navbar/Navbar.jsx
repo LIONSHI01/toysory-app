@@ -3,6 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 
+import {
+  selectIsCartOpen,
+  selectCartCount,
+} from "../../../store/cart/cart.selector";
 import { setIsCartOpen } from "../../../store/cart/cart.action";
 import { BsHandbag } from "react-icons/bs";
 import styles from "./Navbar.module.scss";
@@ -10,7 +14,9 @@ import logoImg from "../../../assets/brand/logo.png";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const openCartHandler = () => dispatch(setIsCartOpen(true));
+  const isCartOpen = useSelector(selectIsCartOpen);
+  const cartCount = useSelector(selectCartCount);
+  const openCartHandler = () => dispatch(setIsCartOpen(!isCartOpen));
 
   return (
     <nav className={styles.navbar}>
@@ -57,7 +63,7 @@ const Navbar = () => {
             <li>
               <div className={styles.navbar__cart} onClick={openCartHandler}>
                 <BsHandbag className={styles.navbar__icon} />
-                <span className={styles.navbar__cartQty}>0</span>
+                <span className={styles.navbar__cartQty}>{cartCount}</span>
               </div>
             </li>
           </ul>
