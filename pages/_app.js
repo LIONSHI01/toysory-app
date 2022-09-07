@@ -2,6 +2,8 @@ import { Provider } from "react-redux";
 import { store } from "../store/store";
 
 import "../styles/globals.css";
+import "../styles/CartBar.css";
+import "../styles/CartItem.css";
 import "../styles/nprogress.css";
 import "../styles/ProductCard.css";
 import Layout from "../components/Layout";

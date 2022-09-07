@@ -5,6 +5,7 @@ import NProgress from "nprogress";
 import Footer from "./Navigation/footer/Footer";
 import Meta from "./Meta";
 import Navbar from "./Navigation/navbar/Navbar";
+import CartBar from "./Product/CartBar/CartBar";
 
 const Layout = ({ children }) => {
   // Add LOADING screen on route change event
@@ -15,6 +16,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Meta />
+      <CartBar />
       <Navbar />
       {children}
       <Footer />

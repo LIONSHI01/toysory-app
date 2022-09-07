@@ -45,10 +45,12 @@ const ProductCard = ({ product }) => {
           <BsHeartFill className="ProductCard__button_icon" />
           <span className="ProductCard__buttonText">Favorite</span>
         </button>
-        <button type="button" className="ProductCard__details_btn">
-          <GiMagnifyingGlass className="ProductCard__button_icon" />
-          <span className="ProductCard__buttonText">Details</span>
-        </button>
+        <Link href={`/product/${slug.current}`}>
+          <button type="button" className="ProductCard__details_btn">
+            <GiMagnifyingGlass className="ProductCard__button_icon" />
+            <span className="ProductCard__buttonText">Details</span>
+          </button>
+        </Link>
       </div>
       <div className={`dropdownBox ${isDropdown ? "active" : ""}`}>
         <div className="dropdownBox__shopping_btns">

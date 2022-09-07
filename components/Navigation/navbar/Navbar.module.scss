@@ -28,6 +28,7 @@
   }
 
   &__link {
+    display: block;
   }
 
   &__authentication {
@@ -54,5 +55,32 @@
   }
 
   &__register {
+  }
+
+  &__cart {
+    position: relative;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+  }
+  &__cartQty {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -30%;
+    right: -50%;
+
+    border-radius: 200px;
+    background-color: var(--red);
+
+    text-align: center;
+
+    color: var(--white);
+  }
+  &__icon {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }

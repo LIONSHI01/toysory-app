@@ -52,6 +52,7 @@ body {
 
   --grey-light-1: #eaeaea;
   --grey-light-2: #eeeeee;
+  --grey-light-3: #f7f7f7;
   /* 
   --grey-dark-1: #5c5c5c;
   --grey-dark-2: #474747;
@@ -85,6 +86,7 @@ body {
 
   /* BORDER RADIUS */
   --br-m: 5px;
+  --br-x: 12px;
 }
 
 .container {

@@ -21,7 +21,7 @@ import CategoryBar from "../../components/CategoryBar/CategoryBar";
 import styles from "./product-details.module.scss";
 import Header from "../../components/Header/Header";
 
-const ProductDetails = ({ product, products }) => {
+const ProductDetails = ({ product }) => {
   const {
     thumbImage,
     detailImage,
@@ -175,12 +175,12 @@ export const getStaticProps = async ({ params: { slug } }) => {
   const productsQuery = '*[_type=="product"]';
 
   const product = await client.fetch(query);
-  const products = await client.fetch(productsQuery);
+  // const products = await client.fetch(productsQuery);
 
   return {
     props: {
       product,
-      products,
+      // products,
     },
   };
 };

@@ -1,11 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
 
+import { setIsCartOpen } from "../../../store/cart/cart.action";
+import { BsHandbag } from "react-icons/bs";
 import styles from "./Navbar.module.scss";
 import logoImg from "../../../assets/brand/logo.png";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const openCartHandler = () => dispatch(setIsCartOpen(true));
+
   return (
     <nav className={styles.navbar}>
       <div className="container">
@@ -31,21 +37,13 @@ const Navbar = () => {
                 <a className={styles.navbar__link}>Markeplace</a>
               </Link>
             </li>
-            <li>
-              <Link href="/">
-                <a className={styles.navbar__link}>Shopping Guide</a>
-              </Link>
-            </li>
+
             <li>
               <Link href="/">
                 <a className={styles.navbar__link}>Blog</a>
               </Link>
             </li>
-            <li>
-              <Link href="/">
-                <a className={styles.navbar__link}>Contact</a>
-              </Link>
-            </li>
+
             <li>
               <div className={styles.navbar__authentication}>
                 <Link href="/">
@@ -54,6 +52,12 @@ const Navbar = () => {
                 <Link href="/">
                   <a className={styles.navbar__register}>Register</a>
                 </Link>
+              </div>
+            </li>
+            <li>
+              <div className={styles.navbar__cart} onClick={openCartHandler}>
+                <BsHandbag className={styles.navbar__icon} />
+                <span className={styles.navbar__cartQty}>0</span>
               </div>
             </li>
           </ul>
