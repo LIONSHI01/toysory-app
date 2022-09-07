@@ -1,5 +1,7 @@
 import React from "react";
+// import { useSelector } from "react-redux";
 
+// import { selectAllProducts } from "../../store/product/product.selector";
 import { client } from "../../lib/client";
 import CategoryBar from "../../components/CategoryBar/CategoryBar";
 import Header from "../../components/Header/Header";

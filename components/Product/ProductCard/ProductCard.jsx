@@ -14,6 +14,7 @@ import { MdShoppingCart } from "react-icons/md";
 import { FaAngleDown } from "react-icons/fa";
 import { GiMagnifyingGlass } from "react-icons/gi";
 
+// CSS file in /styles folder
 const ProductCard = ({ product }) => {
   const [isDropdown, setIsDropdown] = useState(false);
   const { thumbImage, salePrice, name, slug } = product;
