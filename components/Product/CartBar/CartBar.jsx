@@ -9,6 +9,7 @@ import {
   selectCartTotal,
 } from "../../../store/cart/cart.selector";
 import { ImArrowLeft2 } from "react-icons/im";
+import { BsBagPlus } from "react-icons/bs";
 
 import { setIsCartOpen } from "../../../store/cart/cart.action";
 import CartItem from "../CartItem";
@@ -31,17 +32,27 @@ const CartBar = () => {
         <span className="cartbar__backText">Back To Shopping</span>
         <span className="cartbar__itemQty">{`(${cartCount} items)`}</span>
       </div>
-      <div className="cartItemList">
-        {cartItems?.map((product) => (
-          <CartItem key={product._id} product={product} />
-        ))}
-      </div>
-      <div className="cartItem__summary">
-        <span className="cartbar__total">{`Total HK$ ${cartTotal}`}</span>
-      </div>
-      <Link href="/">
-        <a className="cartbar__checkout-btn">Check out</a>
-      </Link>
+
+      {cartItems.length >= 1 ? (
+        <>
+          <div className="cartItemList">
+            {cartItems?.map((product) => (
+              <CartItem key={product._id} product={product} />
+            ))}
+          </div>
+          <div className="cartItem__summary">
+            <span className="cartbar__total">{`Total HK$ ${cartTotal}`}</span>
+          </div>
+          <Link href="/">
+            <a className="cartbar__checkout-btn">Check out</a>
+          </Link>
+        </>
+      ) : (
+        <div className="cartItem__emptyBox">
+          <BsBagPlus className="cartItem__emptyBox-icon" />
+          <span className="cartItem__emptyBox-text">Your cart is Empty</span>
+        </div>
+      )}
     </div>
   );
 };

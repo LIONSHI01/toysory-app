@@ -104,3 +104,23 @@ input::-webkit-inner-spin-button {
   font-weight: 700;
   color: var(--black-light-2);
 }
+
+.cartItem__emptyBox {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4rem;
+}
+
+.cartItem__emptyBox-icon {
+  width: 10rem;
+  height: 10rem;
+  color: var(--red);
+}
+.cartItem__emptyBox-text {
+  font-size: var(--fs-xl);
+  text-transform: uppercase;
+}

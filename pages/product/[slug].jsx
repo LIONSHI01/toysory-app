@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
+import { toast } from "react-hot-toast";
 
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import {
@@ -9,15 +11,15 @@ import {
   BsCartCheckFill,
 } from "react-icons/bs";
 
+import { addItemToCart, setIsCartOpen } from "../../store/cart/cart.action";
+import { selectCartItems } from "../../store/cart/cart.selector";
+
 import { client, urlFor } from "../../lib/client";
 import Sidebar from "../../components/Navigation/sidebar/Sidebar";
 import Hero from "../../components/Hero/Hero";
 import ProductBanner from "../../assets/img/hero-2.jpg";
 import CategoryBar from "../../components/CategoryBar/CategoryBar";
 
-// import PdImg from "../../assets/img/products/product-01/4.jpg";
-// import PdImg2 from "../../assets/img/products/product-01/1.jpg";
-// import PdImg3 from "../../assets/img/products/product-01/3.jpg";
 import styles from "./product-details.module.scss";
 import Header from "../../components/Header/Header";
 
@@ -31,6 +33,67 @@ const ProductDetails = ({ product }) => {
     description,
     specification,
   } = product;
+
+  // Add item to cart
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+
+  // Set up Form state
+  const INITIAL_FORM_STATE = {
+    quantity: 1,
+    selectType: specification[0],
+  };
+
+  const [formField, setFormField] = useState(INITIAL_FORM_STATE);
+  const { quantity, selectType } = formField;
+
+  const onChangeFormHandler = (e) => {
+    const { value, name } = e.target;
+    setFormField({ ...formField, [name]: value });
+  };
+
+  const plusQty = () => setFormField({ ...formField, quantity: +quantity + 1 });
+
+  const minusQty = () => {
+    if (quantity > 1) {
+      setFormField({ ...formField, quantity: +quantity - 1 });
+    }
+  };
+
+  // Dispatch Actions
+  const submitHandler = () => {
+    if (+quantity >= 1) {
+      const updatedProduct = {
+        ...product,
+        selectType,
+      };
+
+      dispatch(addItemToCart(cartItems, updatedProduct, Number(quantity)));
+      toast.success(`Added ${quantity} ${product.name} to Cart!`, {
+        style: { fontSize: "20px" },
+      });
+    } else {
+      toast.error(`Sorry, AMOUNT should be > 1`, {
+        style: { fontSize: "20px" },
+      });
+    }
+  };
+
+  const buyNowHandler = () => {
+    if (+quantity >= 1) {
+      const updatedProduct = {
+        ...product,
+        selectType,
+      };
+
+      dispatch(addItemToCart(cartItems, updatedProduct, Number(quantity)));
+      dispatch(setIsCartOpen(true));
+    } else {
+      toast.error(`Sorry, AMOUNT should be > 1`, {
+        style: { fontSize: "20px" },
+      });
+    }
+  };
 
   return (
     <div>
@@ -46,14 +109,13 @@ const ProductDetails = ({ product }) => {
               <div className={styles.intro__image}>
                 <Image
                   src={urlFor(thumbImage && thumbImage[0])}
-                  // objectFit="cover"
-                  // layout="fill"
                   width={800}
                   height={800}
                   alt="product name"
                 ></Image>
               </div>
-              <div className={styles.intro__content}>
+
+              <form className={styles.intro__content}>
                 <h1 className={styles.intro__name}>{name}</h1>
                 <span className={styles.intro__setPrice}>
                   Original Price : HK$ {originalPrice}
@@ -65,7 +127,11 @@ const ProductDetails = ({ product }) => {
                 {specification?.length >= 1 && (
                   <div className={styles.intro__specifications}>
                     <span>Specifications :</span>
-                    <select name="specs" id="specs">
+                    <select
+                      name="selectType"
+                      id="specs"
+                      onChange={onChangeFormHandler}
+                    >
                       <option defaultValue disabled value="">
                         Please select type
                       </option>
@@ -80,28 +146,38 @@ const ProductDetails = ({ product }) => {
 
                 <div className={styles.intro__amount}>
                   <span>Amount :</span>
-                  <span className={styles.intro__minus}>
+                  <span className={styles.intro__minus} onClick={minusQty}>
                     <AiOutlineMinus className={styles.intro__amountIcon} />
                   </span>
                   <input
                     type="number"
                     className={styles.intro__number}
-                    defaultValue="1"
-                    // value="1"
+                    name="quantity"
+                    min={1}
+                    value={quantity}
+                    onChange={onChangeFormHandler}
                   />
 
-                  <span className={styles.intro__plus}>
+                  <span className={styles.intro__plus} onClick={plusQty}>
                     <AiOutlinePlus className={styles.intro__amountIcon} />
                   </span>
                 </div>
                 <div className={styles.intro__buttons}>
-                  <button type="button" className={styles.intro__add_to_cart}>
+                  <button
+                    type="button"
+                    className={styles.intro__add_to_cart}
+                    onClick={submitHandler}
+                  >
                     <BsCartCheckFill className={styles.intro__button_icon} />
                     <span className={styles.intro__buttonText}>
                       Add to Cart
                     </span>
                   </button>
-                  <button type="button" className={styles.intro__buy_now}>
+                  <button
+                    type="button"
+                    className={styles.intro__buy_now}
+                    onClick={buyNowHandler}
+                  >
                     <BsFillBagCheckFill className={styles.intro__button_icon} />
                     <span className={styles.intro__buttonText}>Buy Now</span>
                   </button>
@@ -115,7 +191,7 @@ const ProductDetails = ({ product }) => {
                     </span>
                   </button>
                 </div>
-              </div>
+              </form>
             </div>
             <div className={styles.details}>
               <div className={styles.details__heading}>Details</div>

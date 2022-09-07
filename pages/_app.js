@@ -1,5 +1,6 @@
 import { Provider } from "react-redux";
 import { store } from "../store/store";
+import { Toaster } from "react-hot-toast";
 
 import "../styles/globals.css";
 import "../styles/CartBar.css";
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <Layout>
+        <Toaster />
         <Component {...pageProps} />
       </Layout>
     </Provider>
