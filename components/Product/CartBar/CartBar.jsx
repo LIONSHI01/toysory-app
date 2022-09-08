@@ -43,8 +43,10 @@ const CartBar = () => {
           <div className="cartItem__summary">
             <span className="cartbar__total">{`Total HK$ ${cartTotal}`}</span>
           </div>
-          <Link href="/">
-            <a className="cartbar__checkout-btn">Check out</a>
+          <Link href="/cart">
+            <a className="cartbar__checkout-btn" onClick={closeCartHandler}>
+              Check out
+            </a>
           </Link>
         </>
       ) : (

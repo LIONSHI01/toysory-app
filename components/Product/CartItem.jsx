@@ -9,8 +9,9 @@ import {
   minusItemFromCart,
   removeItemFromCart,
 } from "../../store/cart/cart.action";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { MdDelete } from "react-icons/md";
 import { selectCartItems } from "../../store/cart/cart.selector";
-import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 const CartItem = ({ product }) => {
   const { name, salePrice, thumbImage, slug, quantity } = product;
@@ -42,7 +43,7 @@ const CartItem = ({ product }) => {
             className="cartItem__deleteButton"
             onClick={removeFromCartHandler}
           >
-            <AiOutlineDelete className="cartItem__delete-icon" />
+            <MdDelete className="cartItem__delete-icon" />
           </span>
         </div>
         <div className="cartItem__bottom">

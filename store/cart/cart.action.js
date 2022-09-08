@@ -7,19 +7,35 @@ const addCartItem = (cartItems, productToAdd, inputQty) => {
   if (existProduct) {
     return cartItems.map((item) =>
       item._id === productToAdd._id
-        ? { ...item, quantity: item.quantity + inputQty }
+        ? {
+            ...item,
+            quantity: item.quantity + inputQty,
+            subTotal: item.salePrice * (item.quantity + inputQty),
+          }
         : item
     );
   }
-  return [...cartItems, { ...productToAdd, quantity: inputQty }];
+  return [
+    ...cartItems,
+    {
+      ...productToAdd,
+      quantity: inputQty,
+      subTotal: inputQty * productToAdd.salePrice,
+    },
+  ];
 };
+
 const minusCartItem = (cartItems, productToAdd) => {
   const existProduct = cartItems.find((item) => item._id === productToAdd._id);
 
   if (existProduct.quantity > 1) {
     return cartItems.map((item) =>
       item._id === productToAdd._id
-        ? { ...item, quantity: item.quantity - 1 }
+        ? {
+            ...item,
+            quantity: item.quantity - 1,
+            subTotal: (item.quantity - 1) * item.salePrice,
+          }
         : item
     );
   }

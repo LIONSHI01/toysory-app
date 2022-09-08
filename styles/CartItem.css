@@ -48,7 +48,7 @@
 }
 
 .cartItem__delete-icon {
-  color: var(--red);
+  color: var(--black-light-2);
   width: 2.5rem;
   height: 2.5rem;
 }
