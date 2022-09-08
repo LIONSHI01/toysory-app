@@ -1,7 +1,5 @@
 import React from "react";
-// import { useSelector } from "react-redux";
 
-// import { selectAllProducts } from "../../store/product/product.selector";
 import { client } from "../../lib/client";
 import CategoryBar from "../../components/CategoryBar/CategoryBar";
 import Header from "../../components/Header/Header";
@@ -12,14 +10,14 @@ import ProductList from "../../components/Product/ProductList/ProductList";
 
 import classes from "./index.module.scss";
 
-const Product = ({ products }) => {
+const Product = ({ products, categories }) => {
   return (
     <div>
       <Hero />
       <Header primary="All Products" secondary="Shopping" />
       <div className="container">
         <main className={classes.products__main}>
-          <Sidebar />
+          <Sidebar categories={categories} />
           <div className={classes.products__content}>
             <CategoryBar category="All Products" />
             <ProductList products={products} />
@@ -34,8 +32,9 @@ export const getStaticProps = async () => {
   const query = '*[_type=="product"]';
   const products = await client.fetch(query);
 
+  const categories = [...new Set(products.map((product) => product.category))];
   return {
-    props: { products },
+    props: { products, categories },
   };
 };
 

@@ -9,7 +9,7 @@ const Meta = ({ title, keywords, description }) => {
       <meta name="description" content={description} />
       <meta charSet="utf-8" />
       <link rel="icon" href="/favicon.ico" />
-      <title>SmartDragon | {title}</title>
+      <title>{`SmartDragon | ${title}`}</title>
     </Head>
   );
 };
@@ -20,6 +20,12 @@ Meta.defaultProps = {
   keywords: "Education expert for children",
   description:
     "Smartdragon is an international education organization, providing professional educational toys to children in STEM areas.",
+};
+
+Meta.defaultProps = {
+  title: "Education Expert",
+  keywords: "Toys",
+  description: "SmartDragon is a online toys shop ",
 };
 
 export default Meta;

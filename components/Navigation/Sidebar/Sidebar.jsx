@@ -1,26 +1,23 @@
 import React from "react";
+import Link from "next/link";
 
 import classes from "./Sidebar.module.scss";
 
-const Sidebar = () => {
+const Sidebar = ({ categories }) => {
+  // const displayCategory = categories?.map((category) =>
+  //   category.replace("-", " ")
+  // );
+
   return (
     <aside className={classes.sidebar}>
       <h3 className={classes.sidebar__heading}>Toy Stories</h3>
-      <div className={classes.sidebar__category}>
-        <h4>On Sale</h4>
-      </div>
-      <div className={classes.sidebar__category}>
-        <h4>Popular Toys</h4>
-      </div>
-      <div className={classes.sidebar__category}>
-        <h4>Music Box</h4>
-      </div>
-      <div className={classes.sidebar__category}>
-        <h4>Puzzles</h4>
-      </div>
-      <div className={classes.sidebar__category}>
-        <h4>Classic Times</h4>
-      </div>
+      {categories?.map((category, i) => (
+        <Link key={i} href={`/category/${category}`}>
+          <div className={classes.sidebar__category}>
+            <h4>{category.replace("-", " ")}</h4>
+          </div>
+        </Link>
+      ))}
     </aside>
   );
 };

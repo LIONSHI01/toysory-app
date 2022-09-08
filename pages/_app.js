@@ -3,6 +3,7 @@ import { store } from "../store/store";
 import { Toaster } from "react-hot-toast";
 
 import "../styles/globals.css";
+import "../styles/cart.css";
 import "../styles/CartBar.css";
 import "../styles/CartItem.css";
 import "../styles/nprogress.css";

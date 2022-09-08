@@ -4,6 +4,8 @@ import HeroImage from "../../assets/img/hero.jpg";
 import styles from "./Hero.module.scss";
 
 const Hero = ({ banner }) => {
+  // const bannerImg = banner ? banner : HeroImage;
+
   return (
     <section className={styles.hero}>
       <div className="container">
@@ -15,6 +17,7 @@ const Hero = ({ banner }) => {
               layout="fill"
               objectFit="cover"
               className={styles.hero__image}
+              priority
             />
           </div>
         </div>

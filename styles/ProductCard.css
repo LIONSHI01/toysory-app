@@ -89,8 +89,9 @@
 }
 
 .ProductCard__name {
+  text-transform: uppercase;
   font-size: var(--default-fs);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .ProductCard__shopping {

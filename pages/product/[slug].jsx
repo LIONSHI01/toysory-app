@@ -23,7 +23,7 @@ import CategoryBar from "../../components/CategoryBar/CategoryBar";
 import styles from "./product-details.module.scss";
 import Header from "../../components/Header/Header";
 
-const ProductDetails = ({ product }) => {
+const ProductDetails = ({ product, categories }) => {
   const {
     thumbImage,
     detailImage,
@@ -32,6 +32,7 @@ const ProductDetails = ({ product }) => {
     salePrice,
     description,
     specification,
+    bannerImage,
   } = product;
 
   // Add item to cart
@@ -41,7 +42,7 @@ const ProductDetails = ({ product }) => {
   // Set up Form state
   const INITIAL_FORM_STATE = {
     quantity: 1,
-    selectType: specification[0],
+    selectType: specification && specification[0],
   };
 
   const [formField, setFormField] = useState(INITIAL_FORM_STATE);
@@ -69,9 +70,13 @@ const ProductDetails = ({ product }) => {
       };
 
       dispatch(addItemToCart(cartItems, updatedProduct, Number(quantity)));
-      toast.success(`Added ${quantity} ${product.name} to Cart!`, {
-        style: { fontSize: "20px" },
-      });
+      setFormField(INITIAL_FORM_STATE);
+      toast.success(
+        `Added ${+quantity} ${product.name.toUpperCase()} to Cart!`,
+        {
+          style: { fontSize: "20px" },
+        }
+      );
     } else {
       toast.error(`Sorry, AMOUNT should be > 1`, {
         style: { fontSize: "20px" },
@@ -88,6 +93,7 @@ const ProductDetails = ({ product }) => {
 
       dispatch(addItemToCart(cartItems, updatedProduct, Number(quantity)));
       dispatch(setIsCartOpen(true));
+      setFormField(INITIAL_FORM_STATE);
     } else {
       toast.error(`Sorry, AMOUNT should be > 1`, {
         style: { fontSize: "20px" },
@@ -97,11 +103,11 @@ const ProductDetails = ({ product }) => {
 
   return (
     <div>
-      <Hero banner={ProductBanner} />
+      <Hero banner={urlFor(bannerImage && bannerImage[0]) || ProductBanner} />
       <Header primary="Shopping" secondary="Product Details" />
       <div className="container">
         <main className={styles.product__main}>
-          <Sidebar />
+          <Sidebar categories={categories} />
           <section className={styles.product}>
             <CategoryBar category="Category name" />
 
@@ -121,7 +127,7 @@ const ProductDetails = ({ product }) => {
                   Original Price : HK$ {originalPrice}
                 </span>
                 <span className={styles.intro__salePrice}>
-                  Sale Price : <span>HK$ {salePrice} </span>{" "}
+                  Sale Price :<span>HK$ {salePrice}</span>
                 </span>
 
                 {specification?.length >= 1 && (
@@ -237,6 +243,7 @@ export const getStaticPaths = async () => {
       slug: product.slug.current,
     },
   }));
+  console.log(paths);
 
   return {
     paths,
@@ -247,16 +254,19 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params: { slug } }) => {
   // Fetch ONE product data with slug
   const query = `*[_type=="product" && slug.current=='${slug}'][0]`;
-  // Fetch ALL products data
-  const productsQuery = '*[_type=="product"]';
-
   const product = await client.fetch(query);
-  // const products = await client.fetch(productsQuery);
+
+  // Fetch All products for Category list
+  const allProductsQuery = `*[_type=="product"]`;
+  const allProducts = await client.fetch(allProductsQuery);
+  const categories = [
+    ...new Set(allProducts.map((product) => product.category)),
+  ];
 
   return {
     props: {
       product,
-      // products,
+      categories,
     },
   };
 };

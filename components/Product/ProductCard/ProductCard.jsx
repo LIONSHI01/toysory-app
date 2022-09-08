@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
 
 import { selectCartItems } from "../../../store/cart/cart.selector";
-import { addItemToCart } from "../../../store/cart/cart.action";
+import { addItemToCart, setIsCartOpen } from "../../../store/cart/cart.action";
 
 import { urlFor } from "../../../lib/client";
 
@@ -27,7 +28,17 @@ const ProductCard = ({ product }) => {
 
   const cartItems = useSelector(selectCartItems);
 
-  const addToCart = () => dispatch(addItemToCart(cartItems, product));
+  const addToCart = () => {
+    dispatch(addItemToCart(cartItems, product));
+    toast.success(`Added ${product.name.toUpperCase()} to Cart!`, {
+      style: { fontSize: "20px" },
+    });
+  };
+
+  const buyNowHandler = () => {
+    dispatch(addItemToCart(cartItems, product));
+    dispatch(setIsCartOpen(true));
+  };
 
   return (
     <div className="ProductCard">
@@ -72,7 +83,11 @@ const ProductCard = ({ product }) => {
             <BsCartCheckFill className="dropdownBox__button_icon" />
             <span className="dropdownBox__buttonText">Add to Cart</span>
           </button>
-          <button type="button" className="dropdownBox__buy_now">
+          <button
+            type="button"
+            className="dropdownBox__buy_now"
+            onClick={buyNowHandler}
+          >
             <BsFillBagCheckFill className="dropdownBox__button_icon" />
             <span className="dropdownBox__buttonText">Buy Now</span>
           </button>

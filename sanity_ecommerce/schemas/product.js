@@ -2,6 +2,11 @@ export default {
   name: "product",
   title: "Product",
   type: "document",
+  initialValue: {
+    onSale: false,
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam rerum reiciendis, dolores repudiandae aliquid beatae quibusdam eum molestias laudantium. Unde, repudiandae necessitatibus assumenda dolorum quaerat beatae voluptas reiciendis laboriosam consequatur.",
+  },
   fields: [
     {
       name: "thumbImage",
@@ -12,9 +17,19 @@ export default {
         hotspot: true,
       },
     },
+
     {
       name: "detailImage",
       title: "DetailImage",
+      type: "array",
+      of: [{ type: "image" }],
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: "bannerImage",
+      title: "BannerImage",
       type: "array",
       of: [{ type: "image" }],
       options: {
@@ -46,9 +61,19 @@ export default {
       type: "number",
     },
     {
+      name: "category",
+      title: "Category",
+      type: "string",
+    },
+    {
       name: "description",
       title: "Description",
       type: "string",
+    },
+    {
+      name: "onSale",
+      title: "OnSale",
+      type: "boolean",
     },
     {
       name: "specification",
