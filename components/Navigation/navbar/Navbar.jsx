@@ -52,7 +52,7 @@ const Navbar = () => {
 
             <li>
               <div className={styles.navbar__authentication}>
-                <Link href="/">
+                <Link href="/account/login">
                   <a className={styles.navbar__login}>Log in</a>
                 </Link>
                 <Link href="/">

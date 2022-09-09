@@ -33,6 +33,7 @@ const ProductDetails = ({ product, categories }) => {
     description,
     specification,
     bannerImage,
+    category,
   } = product;
 
   // Add item to cart
@@ -109,7 +110,7 @@ const ProductDetails = ({ product, categories }) => {
         <main className={styles.product__main}>
           <Sidebar categories={categories} />
           <section className={styles.product}>
-            <CategoryBar category="Category name" />
+            <CategoryBar category={category} />
 
             <div className={styles.intro}>
               <div className={styles.intro__image}>

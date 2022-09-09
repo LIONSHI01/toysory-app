@@ -51,13 +51,18 @@ export const setIsCartOpen = (boolean) =>
 
 export const addItemToCart = (cartItems, product, inputQty = 1) => {
   const newCartItems = addCartItem(cartItems, product, inputQty);
+  localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };
 export const minusItemFromCart = (cartItems, product) => {
   const newCartItems = minusCartItem(cartItems, product);
+  localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };
 export const removeItemFromCart = (cartItems, product) => {
   const newCartItems = removeCartItem(cartItems, product);
+  localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };
+export const setCartItemsFromLocalStorage = (cartItems) =>
+  createAction(CART_ACTION_TYPES.SET_CART_ITEMS, cartItems);

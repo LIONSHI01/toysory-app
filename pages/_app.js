@@ -11,14 +11,20 @@ import "../styles/ProductCard.css";
 import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <Provider store={store}>
-      <Layout>
-        <Toaster />
-        <Component {...pageProps} />
-      </Layout>
-    </Provider>
-  );
+  function CommonLayout(page) {
+    return (
+      <Provider store={store}>
+        <Layout>
+          <Toaster />
+          {page}
+        </Layout>
+      </Provider>
+    );
+  }
+
+  const getLayout = Component.getLayout || CommonLayout;
+
+  return getLayout(<Component {...pageProps} />);
 }
 
 export default MyApp;

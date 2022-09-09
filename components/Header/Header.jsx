@@ -10,7 +10,9 @@ const Header = ({ primary, secondary }) => {
       <div className="container">
         <div className={classes.heading}>
           <h2 className={classes.heading__primary}>{displayPrimary}</h2>
-          <span className={classes.heading__secondary}>/-{secondary}-/</span>
+          <span
+            className={classes.heading__secondary}
+          >{`/-${secondary}-/`}</span>
         </div>
       </div>
     </header>
