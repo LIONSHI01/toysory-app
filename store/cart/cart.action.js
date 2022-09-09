@@ -3,7 +3,7 @@ import { CART_ACTION_TYPES } from "./cart.types";
 
 const addCartItem = (cartItems, productToAdd, inputQty) => {
   const existProduct = cartItems.find((item) => item._id === productToAdd._id);
-  console.log(inputQty);
+
   if (existProduct) {
     return cartItems.map((item) =>
       item._id === productToAdd._id

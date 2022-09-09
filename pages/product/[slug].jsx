@@ -243,7 +243,7 @@ export const getStaticPaths = async () => {
       slug: product.slug.current,
     },
   }));
-  console.log(paths);
+  // console.log(paths);
 
   return {
     paths,

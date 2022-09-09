@@ -1,7 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
+import getStripe from "../lib/getStripe";
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
 
@@ -22,6 +24,26 @@ import CheckoutItem from "../components/Product/CheckoutItem/CheckoutItem";
 const Cart = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
+
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+
+    const response = await fetch("/api/stripe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    if (response.statusCode === 500) return;
+
+    const data = await response.json();
+
+    toast.loading("Redirecting...");
+
+    stripe.redirectToCheckout({ sessionId: data.id });
+  };
 
   return (
     <div className="cart">
@@ -68,25 +90,31 @@ const Cart = () => {
                 <CheckoutItem key={product._id} product={product} />
               ))}
             </div>
-            <div className="cart__sum-box">
-              <span>Total</span>
-              <span>{`HK$ ${cartTotal}`}</span>
-            </div>
+            {cartItems.length >= 1 ? (
+              <div className="cart__sum-box">
+                <span>Total</span>
+                <span>{`HK$ ${cartTotal}`}</span>
+              </div>
+            ) : (
+              <div className="cart__empty-text">
+                {"No Item Yet ! Let's buy some !"}
+              </div>
+            )}
           </div>
           <div className="cart__btns-group">
             <Link href="/product">
               <a className="cart__shopping-btn-box">
-                <AiOutlineLeft />
-                <span>Continue Shopping</span>
+                <AiOutlineLeft className="cart__shopping-btn-left" />
+                <span>Shopping</span>
               </a>
             </Link>
-            <Link href="/">
+            <button type="button" onClick={handleCheckout}>
               <a className="cart__shopping-btn-box">
                 <span>Check Out</span>
                 <SiCashapp />
-                <AiOutlineRight />
+                <AiOutlineRight className="cart__shopping-btn-right" />
               </a>
-            </Link>
+            </button>
           </div>
         </div>
       </div>
