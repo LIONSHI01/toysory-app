@@ -51,7 +51,7 @@ const Cart = () => {
         <Hero banner={CartImg} />
         <Header primary={"Shopping Cart"} secondary={"Item List"} />
       </header>
-      <div className="container">
+      <main className="container">
         <div className="cart__flow-container">
           <div className="cart__flow-step">
             <span className="cart__flow-num">1</span>
@@ -69,55 +69,69 @@ const Cart = () => {
             <span>Finish Check Out</span>
           </div>
         </div>
-        <div className="cart__shopping">
-          <div className="cart__table">
-            <div className="cart__title">
-              <div className="cart__title-icon-box">
-                <FaShippingFast className="cart__title-icon" />
+        {cartItems.length >= 1 ? (
+          <div className="cart__shopping">
+            <div className="cart__table">
+              <div className="cart__title">
+                <div className="cart__title-icon-box">
+                  <FaShippingFast className="cart__title-icon" />
+                </div>
+                <h4 className="cart__title-text">Cart Items</h4>
               </div>
-              <h4 className="cart__title-text">Cart Items</h4>
-            </div>
-            <div className="cart__table-head">
-              <span>Product Name</span>
-              <span>Specifications</span>
-              <span>Unit Price</span>
-              <span>Quantity</span>
-              <span>Sub-total</span>
-              <span>Remove</span>
-            </div>
-            <div className="cart__table-body">
-              {cartItems?.map((product) => (
-                <CheckoutItem key={product._id} product={product} />
-              ))}
-            </div>
-            {cartItems.length >= 1 ? (
-              <div className="cart__sum-box">
-                <span>Total</span>
-                <span>{`HK$ ${cartTotal}`}</span>
+              <div className="cart__table-head">
+                <span>Product Name</span>
+                <span>Specifications</span>
+                <span>Unit Price</span>
+                <span>Quantity</span>
+                <span>Sub-total</span>
+                <span>Remove</span>
               </div>
-            ) : (
-              <div className="cart__empty-text">
-                {"No Item Yet ! Let's buy some !"}
+              <div className="cart__table-body">
+                {cartItems?.map((product) => (
+                  <CheckoutItem key={product._id} product={product} />
+                ))}
               </div>
-            )}
+              {cartItems.length >= 1 ? (
+                <div className="cart__sum-box">
+                  <span>Total</span>
+                  <span>{`HK$ ${cartTotal}`}</span>
+                </div>
+              ) : (
+                <div className="cart__empty-text">
+                  {"No Item Yet ! Let's buy some !"}
+                </div>
+              )}
+            </div>
+            <div className="cart__btns-group">
+              <Link href="/product">
+                <a className="cart__shopping-btn-box">
+                  <AiOutlineLeft className="cart__shopping-btn-left" />
+                  <span>Shopping</span>
+                </a>
+              </Link>
+              <div onClick={handleCheckout}>
+                <a className="cart__shopping-btn-box">
+                  <span>Check Out</span>
+                  <SiCashapp />
+                  <AiOutlineRight className="cart__shopping-btn-right" />
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="cart__btns-group">
+        ) : (
+          <div className="cart__empty-msg">
+            <div className="cart__empty-text">
+              {"No Item Yet ! Let's buy some !"}
+            </div>
             <Link href="/product">
               <a className="cart__shopping-btn-box">
                 <AiOutlineLeft className="cart__shopping-btn-left" />
                 <span>Shopping</span>
               </a>
             </Link>
-            <button type="button" onClick={handleCheckout}>
-              <a className="cart__shopping-btn-box">
-                <span>Check Out</span>
-                <SiCashapp />
-                <AiOutlineRight className="cart__shopping-btn-right" />
-              </a>
-            </button>
           </div>
-        </div>
-      </div>
+        )}
+      </main>
     </div>
   );
 };

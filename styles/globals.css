@@ -24,6 +24,11 @@ body {
   overflow-x: hidden;
 }
 
+::selection {
+  background: var(--blue-dark);
+  color: var(--white);
+}
+
 *,
 *::before,
 *::after {
@@ -42,6 +47,8 @@ body {
   --red-light: #ff5882;
   --red-light-2: #ffc0d0;
   --red-dark: #cc254f;
+
+  --green: #59ce8f;
 
   /* for Font color --black */
   --black: #252a34;

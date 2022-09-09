@@ -10,6 +10,7 @@ export default async function handler(req, res) {
       const params = {
         submit_type: "pay",
         mode: "payment",
+        allow_promotion_codes: true,
         payment_method_types: ["card"],
         billing_address_collection: "auto",
         shipping_options: [
@@ -17,6 +18,10 @@ export default async function handler(req, res) {
           { shipping_rate: "shr_1LfyK6I7X7Hhzd8DAZal0Bgv" },
         ],
         line_items: req.body.map((item) => {
+          // ADD SPECIFICATIONS ON ITEM NAME
+          const productName = item.selectType
+            ? `${item.name}-${item.selectType}`
+            : item.name;
           const img = item.thumbImage[0].asset._ref;
           const newImage = img
             .replace(
@@ -29,7 +34,7 @@ export default async function handler(req, res) {
             price_data: {
               currency: "usd",
               product_data: {
-                name: item.name,
+                name: productName,
                 images: [newImage],
               },
               unit_amount: item.salePrice * 100,
@@ -43,7 +48,7 @@ export default async function handler(req, res) {
         }),
 
         success_url: `${req.headers.origin}/success`,
-        cancel_url: `${req.headers.origin}/canceled`,
+        cancel_url: `${req.headers.origin}/cart`,
       };
       console.log("this is params", params);
       const session = await stripe.checkout.sessions.create(params);

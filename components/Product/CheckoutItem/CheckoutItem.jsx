@@ -17,15 +17,8 @@ import { MdDelete } from "react-icons/md";
 import classes from "./CheckoutItem.module.scss";
 
 const CheckoutItem = ({ product }) => {
-  const {
-    name,
-    salePrice,
-    thumbImage,
-    slug,
-    quantity,
-    specification,
-    subTotal,
-  } = product;
+  const { name, salePrice, thumbImage, slug, quantity, subTotal, selectType } =
+    product;
 
   const cartItems = useSelector(selectCartItems);
 
@@ -51,7 +44,7 @@ const CheckoutItem = ({ product }) => {
           <a className={classes.cartItem__name}>{name}</a>
         </Link>
       </div>
-      <span>{specification || ""}</span>
+      <span>{selectType ? `Types: ${selectType}` : ""}</span>
       <span>{`HK$ ${salePrice}`}</span>
       <div className={classes.cartItem__qty_box}>
         <span>Amount :</span>

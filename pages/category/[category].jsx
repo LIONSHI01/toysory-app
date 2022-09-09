@@ -21,7 +21,7 @@ const Category = ({ products, category, categories }) => {
         <main className={classes.products__main}>
           <Sidebar categories={categories} />
           <div className={classes.products__content}>
-            <CategoryBar category="All Products" />
+            <CategoryBar category={category} />
             <ProductList products={products} />
           </div>
         </main>

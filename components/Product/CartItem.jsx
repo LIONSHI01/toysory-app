@@ -14,7 +14,7 @@ import { MdDelete } from "react-icons/md";
 import { selectCartItems } from "../../store/cart/cart.selector";
 
 const CartItem = ({ product }) => {
-  const { name, salePrice, thumbImage, slug, quantity } = product;
+  const { name, salePrice, thumbImage, slug, quantity, selectType } = product;
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const addToCartHandler = () => dispatch(addItemToCart(cartItems, product));
@@ -36,9 +36,12 @@ const CartItem = ({ product }) => {
       </div>
       <div className="cartItem__content">
         <div className="cartItem__top">
-          <Link href={`/product/${slug.current}`}>
-            <h4 className="cartItem__productName">{name}</h4>
-          </Link>
+          <div className="cartItem__details">
+            <Link href={`/product/${slug.current}`}>
+              <h4 className="cartItem__productName">{name}</h4>
+            </Link>
+            <h4 className="cartItem__productType">{`Type: ${selectType}`}</h4>
+          </div>
           <span
             className="cartItem__deleteButton"
             onClick={removeFromCartHandler}
