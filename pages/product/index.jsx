@@ -7,13 +7,13 @@ import Hero from "../../components/Hero/Hero";
 import Sidebar from "../../components/Navigation/sidebar/Sidebar";
 
 import ProductList from "../../components/Product/ProductList/ProductList";
-
+import heroImg from "../../assets/img/hero-3.webp";
 import classes from "./index.module.scss";
 
 const Product = ({ products, categories }) => {
   return (
     <div>
-      <Hero />
+      <Hero banner={heroImg} />
       <Header primary="All Products" secondary="Shopping" />
       <div className="container">
         <main className={classes.products__main}>

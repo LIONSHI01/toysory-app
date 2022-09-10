@@ -1,0 +1,38 @@
+.hero {
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  height: 80%;
+  width: 100%;
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(to right bottom, rgb(8, 217, 214), #ff5882);
+  z-index: -1;
+
+  background-repeat: repeat;
+}
+
+.hero__conatiner {
+  width: 100%;
+}
+
+.hero__imageBox {
+  position: relative;
+  width: 100%;
+}
+.hero__image-big {
+  height: 50vh;
+}
+.hero__image-small {
+  height: 30vh;
+}
+
+.hero__image {
+  filter: brightness(1.1);
+  object-position: center;
+}

@@ -45,6 +45,7 @@
   cursor: pointer;
   transition: all 0.3s;
   color: var(--black-light-2);
+  text-transform: uppercase;
 }
 .cartItem__productType {
   font-size: var(--fs-s);

@@ -45,7 +45,7 @@ const CartBar = () => {
           </div>
           <Link href="/cart">
             <a className="cartbar__checkout-btn" onClick={closeCartHandler}>
-              Check out
+              Check out &rarr;
             </a>
           </Link>
         </>

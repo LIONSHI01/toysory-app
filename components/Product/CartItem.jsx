@@ -40,7 +40,10 @@ const CartItem = ({ product }) => {
             <Link href={`/product/${slug.current}`}>
               <h4 className="cartItem__productName">{name}</h4>
             </Link>
-            <h4 className="cartItem__productType">{`Type: ${selectType}`}</h4>
+
+            {selectType && (
+              <h4 className="cartItem__productType">{`Type: ${selectType}`}</h4>
+            )}
           </div>
           <span
             className="cartItem__deleteButton"

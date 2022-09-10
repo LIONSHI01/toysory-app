@@ -8,6 +8,8 @@ import "../styles/CartBar.css";
 import "../styles/CartItem.css";
 import "../styles/nprogress.css";
 import "../styles/ProductCard.css";
+import "../styles/Hero.css";
+import "../styles/InputForm.css";
 import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {

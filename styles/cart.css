@@ -205,6 +205,7 @@
 }
 
 .cart__empty-text {
+  margin: 10rem 0;
   width: 100%;
   grid-column: 1/-1;
   text-align: center;

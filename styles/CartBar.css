@@ -71,7 +71,7 @@
 .cartbar__checkout-btn:link,
 .cartbar__checkout-btn:visited {
   justify-self: center;
-  padding: 0.8rem 4rem;
+  padding: 1.2rem 4.8rem;
 
   border-radius: var(--br-m);
   background-color: var(--blue);
@@ -81,7 +81,7 @@
   font-size: var(--default-fs);
   text-align: center;
   text-transform: uppercase;
-  margin: var(--mb-m) 0;
+  margin: 5rem 0 3rem 0;
 
   transition: all 0.3s;
 }

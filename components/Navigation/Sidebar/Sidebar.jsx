@@ -4,10 +4,6 @@ import Link from "next/link";
 import classes from "./Sidebar.module.scss";
 
 const Sidebar = ({ categories }) => {
-  // const displayCategory = categories?.map((category) =>
-  //   category.replace("-", " ")
-  // );
-
   return (
     <aside className={classes.sidebar}>
       <h3 className={classes.sidebar__heading}>Toy Stories</h3>
