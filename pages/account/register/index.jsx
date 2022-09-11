@@ -1,23 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
+
 import Link from "next/link";
+import { registerUser } from "../../../lib/authRequest";
 
 import InputForm from "../../../components/InputForm/InputForm";
 
 import classes from "./index.module.scss";
 
+const INITIAL_FORM_FIELDS = {
+  email: "",
+  password: "",
+  passwordConfirm: "",
+};
+
 const Login = () => {
+  const [formFields, setFormFields] = useState(INITIAL_FORM_FIELDS);
+  const { email, password, passwordConfirm } = formFields;
+
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setFormFields({ ...formFields, [name]: value });
+  };
+
+  const sumbitHandler = (e) => {
+    e.preventDefault();
+    if (password !== passwordConfirm) {
+      alert("Invalid Password Input");
+      return;
+    }
+    registerUser(formFields);
+  };
+
   return (
     <main className={classes.signup}>
       <div className={classes.signup__container}>
         <div className={classes.signup__top}>
-          <form className={classes.signup__form}>
+          <form className={classes.signup__form} onSubmit={sumbitHandler}>
             <h1 className={classes.signup__heading}>Create an account</h1>
-            <InputForm type="email" placeholder="Email" />
-            <InputForm type="password" placeholder="Password" minLength="8" />
+            <InputForm
+              type="email"
+              placeholder="Email"
+              required
+              name="email"
+              value={email}
+              onChange={onChangeHandler}
+            />
             <InputForm
               type="password"
-              placeholder="Confirm Password"
+              name="password"
+              placeholder="Password"
+              required
               minLength="8"
+              value={password}
+              onChange={onChangeHandler}
+            />
+            <InputForm
+              type="password"
+              name="passwordConfirm"
+              placeholder="Confirm Password"
+              required
+              minLength="8"
+              value={passwordConfirm}
+              onChange={onChangeHandler}
             />
             <button className={classes.signup__submit} type="submit">
               Sign up
