@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-
 import Link from "next/link";
-import { registerUser } from "../../../lib/authRequest";
 
+import { toast } from "react-hot-toast";
+
+import { registerUser } from "../../../lib/authRequest";
 import InputForm from "../../../components/InputForm/InputForm";
 
 import classes from "./index.module.scss";
@@ -22,13 +23,17 @@ const Login = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const sumbitHandler = (e) => {
+  const sumbitHandler = async (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
       alert("Invalid Password Input");
       return;
     }
-    registerUser(formFields);
+
+    await registerUser(formFields);
+    toast.success(`Added to Cart!`, {
+      style: { fontSize: "20px" },
+    });
   };
 
   return (

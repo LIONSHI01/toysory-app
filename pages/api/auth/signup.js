@@ -1,20 +1,22 @@
 import { connectMongo } from "../../../lib/db";
 import User from "../../../models/userModel";
+import { hashPassword } from "../../../lib/hashPassword";
 
 const handler = async (req, res) => {
-  // if (req.method !== "POST") return;
+  if (req.method !== "POST") return;
 
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const { email, password } = req.body;
 
+    console.log(email, password);
     // VALIDATE INPUT
-    if (!email || !email.include("@") || !password || !password.length > 7) {
-      res.status(422).json({
-        message: "Invalid input email or password, please try again.",
-      });
-      return;
-    }
+    // if (!email || !email.include("@") || !password || !password.length > 7) {
+    //   res.status(422).json({
+    //     message: "Invalid input email or password, please try again.",
+    //   });
+    //   return;
+    // }
 
     // CONNECT MONGO
     await connectMongo();
@@ -32,7 +34,8 @@ const handler = async (req, res) => {
     }
 
     // CREATE NEW USER
-    const newUser = await User.create({ email, password });
+    const hashedPassword = await hashPassword(password);
+    const newUser = await User.create({ email, password: hashedPassword });
     res.status(201).json({
       message: "success",
       data: {

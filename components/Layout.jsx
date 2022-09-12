@@ -4,6 +4,7 @@ import NProgress from "nprogress";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
+import { toast } from "react-hot-toast";
 import { setCartItemsFromLocalStorage } from "../store/cart/cart.action";
 import Footer from "./Navigation/footer/Footer";
 import Meta from "./Meta";
@@ -12,7 +13,12 @@ import CartBar from "./Product/CartBar/CartBar";
 
 const Layout = ({ children }) => {
   // Add LOADING screen on route change event
-  Router.onRouteChangeStart = () => NProgress.start();
+  Router.onRouteChangeStart = () => {
+    NProgress.start();
+    toast.success("loading...", {
+      style: { fontSize: "20px" },
+    });
+  };
   Router.onRouteChangeComplete = () => NProgress.done();
   Router.onRouteChangeError = () => NProgress.done();
 
