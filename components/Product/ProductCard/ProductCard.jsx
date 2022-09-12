@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 
+import { selectFavArr } from "../../../store/user/user.selector";
+import { addItemToFav } from "../../../store/user/user.action";
 import { selectCartItems } from "../../../store/cart/cart.selector";
 import { addItemToCart, setIsCartOpen } from "../../../store/cart/cart.action";
 
@@ -27,10 +29,18 @@ const ProductCard = ({ product }) => {
   const [isDropdown, setIsDropdown] = useState(false);
 
   const cartItems = useSelector(selectCartItems);
+  const favItems = useSelector(selectFavArr);
 
   const addToCart = () => {
     dispatch(addItemToCart(cartItems, product));
     toast.success(`Added ${product.name.toUpperCase()} to Cart!`, {
+      style: { fontSize: "20px" },
+    });
+  };
+
+  const addToFav = () => {
+    dispatch(addItemToFav(favItems, product));
+    toast.success(`Added ${product.name.toUpperCase()} to Favorite!`, {
       style: { fontSize: "20px" },
     });
   };
@@ -62,7 +72,11 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="ProductCard__buttons">
-        <button type="button" className="ProductCard__add_to_favorite">
+        <button
+          type="button"
+          className="ProductCard__add_to_favorite"
+          onClick={addToFav}
+        >
           <BsHeartFill className="ProductCard__button_icon" />
           <span className="ProductCard__buttonText">Favorite</span>
         </button>

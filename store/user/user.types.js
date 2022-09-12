@@ -1,0 +1,3 @@
+export const USER_ACTION_TYPES = {
+  SET_FAVORITES: "user/SET_FAVORITES",
+};

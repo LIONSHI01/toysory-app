@@ -7,7 +7,7 @@ const handler = async (req, res) => {
 
   try {
     // console.log(req.body);
-    const { email, password } = req.body;
+    const { email, password, favorites } = req.body;
 
     console.log(email, password);
     // VALIDATE INPUT
@@ -35,7 +35,11 @@ const handler = async (req, res) => {
 
     // CREATE NEW USER
     const hashedPassword = await hashPassword(password);
-    const newUser = await User.create({ email, password: hashedPassword });
+    const newUser = await User.create({
+      email,
+      password: hashedPassword,
+      favorites,
+    });
     res.status(201).json({
       message: "success",
       data: {
