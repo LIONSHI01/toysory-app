@@ -12,6 +12,7 @@ const removeItem = (favItems, itemToRemove) =>
 
 export const addItemToFav = (favItems, itemToAdd) => {
   const newFavItems = addItem(favItems, itemToAdd);
+  localStorage.setItem("favItems", JSON.stringify(newFavItems));
   return createAction(USER_ACTION_TYPES.SET_FAVORITES, newFavItems);
 };
 
@@ -21,4 +22,7 @@ export const removeItemFromFav = (favItems, itemToRemove) => {
 };
 
 export const setFavoritesArr = (favoritesArr) =>
+  createAction(USER_ACTION_TYPES.SET_FAVORITES, favoritesArr);
+
+export const setFavItemsFromLocalStorage = (favoritesArr) =>
   createAction(USER_ACTION_TYPES.SET_FAVORITES, favoritesArr);

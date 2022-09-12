@@ -55,6 +55,11 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link href="/account/favorite">
+                <a className="navbar__link">Favorites</a>
+              </Link>
+            </li>
+            <li>
               <div className="navbar__authentication">
                 {status === "unauthenticated" || status === "loading" ? (
                   <>

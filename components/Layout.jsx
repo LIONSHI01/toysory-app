@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 
 import { toast } from "react-hot-toast";
 import { setCartItemsFromLocalStorage } from "../store/cart/cart.action";
+import { setFavItemsFromLocalStorage } from "../store/user/user.action";
 import Footer from "./Navigation/footer/Footer";
 import Meta from "./Meta";
 import Navbar from "./Navigation/navbar/Navbar";
@@ -26,7 +27,9 @@ const Layout = ({ children }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     const localCartItems = localStorage.getItem("cartItems");
+    const localFavItems = localStorage.getItem("favItems");
     dispatch(setCartItemsFromLocalStorage(JSON.parse(localCartItems)));
+    dispatch(setFavItemsFromLocalStorage(JSON.parse(localFavItems)));
   });
 
   return (
