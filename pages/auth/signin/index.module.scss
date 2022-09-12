@@ -47,6 +47,7 @@
     font-weight: 700;
     text-transform: uppercase;
     transition: all 0.3s;
+    cursor: pointer;
   }
 
   &__submit:hover {
@@ -70,6 +71,7 @@
     margin-top: 1.5rem;
     transition: all 0.3s;
     font-weight: 500;
+    cursor: pointer;
   }
   &__createAccount:hover {
     color: var(--black);
@@ -94,6 +96,7 @@
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 2rem;
+
     // background-color: orangered;
   }
 
@@ -108,6 +111,7 @@
     font-weight: 700;
     text-transform: uppercase;
     transition: all 0.3s;
+    cursor: pointer;
   }
   &__social_login:hover {
     background-color: #fff;

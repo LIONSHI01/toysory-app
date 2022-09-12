@@ -1,4 +1,5 @@
 import { Provider } from "react-redux";
+import { SessionProvider } from "next-auth/react";
 import { store } from "../store/store";
 import { Toaster } from "react-hot-toast";
 
@@ -15,18 +16,22 @@ import Layout from "../components/Layout";
 function MyApp({ Component, pageProps }) {
   function CommonLayout(page) {
     return (
-      <Provider store={store}>
-        <Layout>
-          <Toaster />
-          {page}
-        </Layout>
-      </Provider>
+      <SessionProvider session={pageProps.session}>
+        <Provider store={store}>
+          <Layout>{page}</Layout>
+        </Provider>
+      </SessionProvider>
     );
   }
 
   const getLayout = Component.getLayout || CommonLayout;
 
-  return getLayout(<Component {...pageProps} />);
+  return getLayout(
+    <SessionProvider session={pageProps.session}>
+      <Toaster />
+      <Component {...pageProps} />;
+    </SessionProvider>
+  );
 }
 
 export default MyApp;

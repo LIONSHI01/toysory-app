@@ -1,7 +1,6 @@
 import React, { useState } from "react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-
-import { toast } from "react-hot-toast";
 
 import { registerUser } from "../../../lib/authRequest";
 import InputForm from "../../../components/InputForm/InputForm";
@@ -15,6 +14,8 @@ const INITIAL_FORM_FIELDS = {
 };
 
 const Login = () => {
+  const session = useSession();
+  console.log(session);
   const [formFields, setFormFields] = useState(INITIAL_FORM_FIELDS);
   const { email, password, passwordConfirm } = formFields;
 
@@ -31,9 +32,6 @@ const Login = () => {
     }
 
     await registerUser(formFields);
-    toast.success(`Added to Cart!`, {
-      style: { fontSize: "20px" },
-    });
   };
 
   return (
@@ -72,7 +70,7 @@ const Login = () => {
               Sign up
             </button>
           </form>
-          <Link href="/account/login">
+          <Link href="/auth/login">
             <a className={classes.signup__haveAccount}>Already have account?</a>
           </Link>
         </div>

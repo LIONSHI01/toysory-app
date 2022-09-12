@@ -1,4 +1,6 @@
 import React from "react";
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,10 +15,13 @@ import styles from "./Navbar.module.scss";
 import logoImg from "../../../assets/brand/logo.png";
 
 const Navbar = () => {
+  const { status, data: session } = useSession();
   const dispatch = useDispatch();
   const isCartOpen = useSelector(selectIsCartOpen);
   const cartCount = useSelector(selectCartCount);
   const openCartHandler = () => dispatch(setIsCartOpen(!isCartOpen));
+
+  const signOutHandler = () => signOut({ callbackUrl: "/" });
 
   return (
     <nav className={styles.navbar}>
@@ -34,30 +39,34 @@ const Navbar = () => {
           </Link>
           <ul className={styles.navbar__links}>
             <li>
-              <Link href="/">
-                <a className={styles.navbar__link}>About</a>
-              </Link>
-            </li>
-            <li>
               <Link href="/product">
                 <a className={styles.navbar__link}>Markeplace</a>
               </Link>
             </li>
-
-            <li>
-              <Link href="/">
-                <a className={styles.navbar__link}>Blog</a>
-              </Link>
-            </li>
-
             <li>
               <div className={styles.navbar__authentication}>
-                <Link href="/account/login">
-                  <a className={styles.navbar__login}>Log in</a>
-                </Link>
-                <Link href="/account/register">
-                  <a className={styles.navbar__register}>Register</a>
-                </Link>
+                {status === "unauthenticated" || status === "loading" ? (
+                  <>
+                    <Link href="/auth/signin">
+                      <a className={styles.navbar__login}>Sign In</a>
+                    </Link>
+                    <Link href="/auth/register">
+                      <a className={styles.navbar__register}>Register</a>
+                    </Link>
+                  </>
+                ) : (
+                  <div className={styles.navbar__accountBox}>
+                    <Link href="/account">
+                      <a className={styles.navbar__account}>Account</a>
+                    </Link>
+                    <a
+                      className={styles.navbar__signout}
+                      onClick={signOutHandler}
+                    >
+                      Sign Out
+                    </a>
+                  </div>
+                )}
               </div>
             </li>
             <li>
