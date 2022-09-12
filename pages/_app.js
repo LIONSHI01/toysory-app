@@ -10,6 +10,7 @@ import "../styles/CartItem.css";
 import "../styles/nprogress.css";
 import "../styles/ProductCard.css";
 import "../styles/Hero.css";
+import "../styles/Navbar.css";
 import "../styles/InputForm.css";
 import Layout from "../components/Layout";
 

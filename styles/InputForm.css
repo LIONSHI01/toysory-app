@@ -17,11 +17,11 @@
   color: var(--white);
   transition: all 0.3s;
 
-  border-bottom: 2px solid transparent;
+  /* border-bottom: 2px solid var(--green); */
 }
 
 .inputForm__input:invalid {
-  border-bottom: 2px solid var(--red);
+  /* border-bottom: 2px solid var(--red); */
 }
 
 .inputForm__input:focus {

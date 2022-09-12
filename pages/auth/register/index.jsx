@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { toast } from "react-hot-toast";
 
 import { registerUser } from "../../../lib/authRequest";
 import InputForm from "../../../components/InputForm/InputForm";
@@ -15,7 +16,7 @@ const INITIAL_FORM_FIELDS = {
 
 const Login = () => {
   const session = useSession();
-  console.log(session);
+  // console.log(session);
   const [formFields, setFormFields] = useState(INITIAL_FORM_FIELDS);
   const { email, password, passwordConfirm } = formFields;
 
@@ -31,7 +32,13 @@ const Login = () => {
       return;
     }
 
-    await registerUser(formFields);
+    const res = await registerUser(formFields);
+
+    if (res.status === 201) {
+      toast.success("Sign up successfully!", { style: { fontSize: "20px" } });
+      window.location.assign("/auth/signin");
+    }
+    // Router.replace("/");
   };
 
   return (

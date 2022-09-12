@@ -104,3 +104,9 @@
     border-bottom: 2px solid var(--red);
   }
 }
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
