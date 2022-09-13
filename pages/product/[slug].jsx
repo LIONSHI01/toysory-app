@@ -264,6 +264,8 @@ export const getStaticProps = async ({ params: { slug } }) => {
     ...new Set(allProducts.map((product) => product.category)),
   ];
 
+  if (!product) return { notFound: true };
+
   return {
     props: {
       product,

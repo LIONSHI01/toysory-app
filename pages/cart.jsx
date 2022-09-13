@@ -100,7 +100,7 @@ const Cart = () => {
                 </div>
               ) : (
                 <div className="cart__empty-text">
-                  {"No Item Yet ! Let's buy some !"}
+                  {"No Item Yet ! Let's Explore!"}
                 </div>
               )}
             </div>
@@ -123,7 +123,7 @@ const Cart = () => {
         ) : (
           <div className="cart__empty-msg">
             <div className="cart__empty-text">
-              {"No Item Yet ! Let's buy some !"}
+              {"No Item Yet ! Let's Explore !"}
             </div>
             <Link href="/product">
               <a className="cart__shopping-btn-box">

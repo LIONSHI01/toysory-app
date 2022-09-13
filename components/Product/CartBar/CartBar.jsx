@@ -30,10 +30,10 @@ const CartBar = () => {
       <div className="cartbar__goback-box" onClick={closeCartHandler}>
         <ImArrowLeft2 className="cartbar__back-icon" />
         <span className="cartbar__backText">Back To Shopping</span>
-        <span className="cartbar__itemQty">{`(${cartCount} items)`}</span>
+        <span className="cartbar__itemQty">{`(${cartCount ?? 0} items)`}</span>
       </div>
 
-      {cartItems.length >= 1 ? (
+      {cartItems?.length >= 1 ? (
         <>
           <div className="cartItemList">
             {cartItems?.map((product) => (

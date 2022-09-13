@@ -9,7 +9,7 @@ const AccountPage = () => {
   //   Router.replace("/");
   // }
 
-  return <div>{data?.user.email}</div>;
+  return <div>{data.user.email}</div>;
 };
 
 export default AccountPage;

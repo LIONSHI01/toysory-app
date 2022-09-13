@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSession } from "next-auth/react";
+
 import Link from "next/link";
 import { toast } from "react-hot-toast";
 
@@ -15,8 +15,6 @@ const INITIAL_FORM_FIELDS = {
 };
 
 const Login = () => {
-  const session = useSession();
-  // console.log(session);
   const [formFields, setFormFields] = useState(INITIAL_FORM_FIELDS);
   const { email, password, passwordConfirm } = formFields;
 

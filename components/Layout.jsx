@@ -28,8 +28,11 @@ const Layout = ({ children }) => {
   useEffect(() => {
     const localCartItems = localStorage.getItem("cartItems");
     const localFavItems = localStorage.getItem("favItems");
-    dispatch(setCartItemsFromLocalStorage(JSON.parse(localCartItems)));
-    dispatch(setFavItemsFromLocalStorage(JSON.parse(localFavItems)));
+    if (localCartItems)
+      dispatch(setCartItemsFromLocalStorage(JSON.parse(localCartItems)));
+
+    if (localFavItems)
+      dispatch(setFavItemsFromLocalStorage(JSON.parse(localFavItems)));
   });
 
   return (
