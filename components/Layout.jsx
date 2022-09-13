@@ -16,9 +16,9 @@ const Layout = ({ children }) => {
   // Add LOADING screen on route change event
   Router.onRouteChangeStart = () => {
     NProgress.start();
-    toast.success("loading...", {
-      style: { fontSize: "20px" },
-    });
+    // toast.success("loading...", {
+    //   style: { fontSize: "20px" },
+    // });
   };
   Router.onRouteChangeComplete = () => NProgress.done();
   Router.onRouteChangeError = () => NProgress.done();

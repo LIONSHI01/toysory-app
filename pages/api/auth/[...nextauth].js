@@ -45,6 +45,7 @@ export default NextAuth({
   pages: {
     signIn: "/auth/sign",
   },
+  secret: process.env.JWT_SECRET,
 });
 
 // export default NextAuth({

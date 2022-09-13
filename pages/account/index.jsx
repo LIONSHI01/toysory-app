@@ -4,12 +4,9 @@ import { useSession } from "next-auth/react";
 
 const AccountPage = () => {
   const { data, status } = useSession();
-  console.log(status);
-  // if (status === "unauthenticated") {
-  //   Router.replace("/");
-  // }
+  // console.log(status);
 
-  return <div>{data.user.email}</div>;
+  return <div></div>;
 };
 
 export default AccountPage;
