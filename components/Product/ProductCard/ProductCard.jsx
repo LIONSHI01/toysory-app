@@ -60,7 +60,6 @@ const ProductCard = ({ product }) => {
           width={320}
           objectFit="cover"
         />
-
         <span className="ProductCard__viewmore">View more</span>
       </div>
       <h4 className="ProductCard__name">{name}</h4>

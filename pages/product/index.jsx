@@ -9,10 +9,16 @@ import Sidebar from "../../components/Navigation/sidebar/Sidebar";
 import ProductList from "../../components/Product/ProductList/ProductList";
 import heroImg from "../../assets/img/hero-3.webp";
 import classes from "./index.module.scss";
+import Meta from "../../components/Meta";
 
 const Product = ({ products, categories }) => {
   return (
     <div>
+      <Meta
+        title="All Products"
+        keywords="Educational, Toys, Experts, Children"
+        description="You can find all the trendy products from here!"
+      />
       <Hero banner={heroImg} />
       <Header primary="All Products" secondary="Shopping" />
       <div className="container">
@@ -35,6 +41,7 @@ export const getStaticProps = async () => {
   const categories = [...new Set(products.map((product) => product.category))];
   return {
     props: { products, categories },
+    revalidate: 3600,
   };
 };
 

@@ -11,10 +11,16 @@ import Sidebar from "../../components/Navigation/sidebar/Sidebar";
 import ProductList from "../../components/Product/ProductList/ProductList";
 
 import classes from "./category.module.scss";
+import Meta from "../../components/Meta";
 
 const Category = ({ products, category, categories }) => {
   return (
-    <div>
+    <>
+      <Meta
+        title={category}
+        keywords={`${category}, Education, Toys`}
+        description={`You can find all the educational toys about ${category} here!`}
+      />
       <Hero />
       <Header primary={category} secondary="Shopping" />
       <div className="container">
@@ -26,7 +32,7 @@ const Category = ({ products, category, categories }) => {
           </div>
         </main>
       </div>
-    </div>
+    </>
   );
 };
 

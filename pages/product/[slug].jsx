@@ -22,6 +22,7 @@ import CategoryBar from "../../components/CategoryBar/CategoryBar";
 
 import styles from "./product-details.module.scss";
 import Header from "../../components/Header/Header";
+import Meta from "../../components/Meta";
 
 const ProductDetails = ({ product, categories }) => {
   const {
@@ -103,7 +104,12 @@ const ProductDetails = ({ product, categories }) => {
   };
 
   return (
-    <div>
+    <>
+      <Meta
+        title={name}
+        keywords={`${category}, Educational, Toys, Experts, Children`}
+        description={description}
+      />
       <Hero banner={urlFor(bannerImage && bannerImage[0]) || ProductBanner} />
       <Header primary="Shopping" secondary="Product Details" />
       <div className="container">
@@ -128,7 +134,7 @@ const ProductDetails = ({ product, categories }) => {
                   Original Price : HK$ {originalPrice}
                 </span>
                 <span className={styles.intro__salePrice}>
-                  Sale Price :<span>HK$ {salePrice}</span>
+                  Sale Price : <span>HK$ {salePrice}</span>
                 </span>
 
                 {specification?.length >= 1 && (
@@ -228,7 +234,7 @@ const ProductDetails = ({ product, categories }) => {
           </section>
         </main>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -244,7 +250,6 @@ export const getStaticPaths = async () => {
       slug: product.slug.current,
     },
   }));
-
 
   return {
     paths,
@@ -271,6 +276,8 @@ export const getStaticProps = async ({ params: { slug } }) => {
       product,
       categories,
     },
+
+    revalidate: 1800,
   };
 };
 

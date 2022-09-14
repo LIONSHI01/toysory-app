@@ -7,17 +7,21 @@ import AboutBox from "../components/AboutBox/AboutBox";
 import PopularProducts from "../components/PopularProducts/PopulartProducts";
 import Hero from "../components/Hero/Hero";
 import HeroImg from "../assets/img/hero.jpg";
+import Meta from "../components/Meta";
 
 const Home = ({ products }) => {
   const dispatch = useDispatch();
   dispatch(setAllProducts(products));
 
   return (
-    <main className="main">
-      <Hero banner={HeroImg} size="big" />
-      <AboutBox />
-      <PopularProducts products={products} />
-    </main>
+    <>
+      <Meta title="Home" />
+      <main className="main">
+        <Hero banner={HeroImg} size="big" />
+        <AboutBox />
+        <PopularProducts products={products} />
+      </main>
+    </>
   );
 };
 
@@ -27,6 +31,7 @@ export const getStaticProps = async () => {
 
   return {
     props: { products },
+    revalidate: 3600,
   };
 };
 
