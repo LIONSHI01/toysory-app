@@ -4,6 +4,7 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
+import Router from "next/router";
 
 import {
   selectIsCartOpen,
@@ -11,7 +12,7 @@ import {
 } from "../../../store/cart/cart.selector";
 import { setIsCartOpen } from "../../../store/cart/cart.action";
 import { BsHandbag } from "react-icons/bs";
-// import styles from "./Navbar.module.scss";
+
 import logoImg from "../../../assets/brand/logo.png";
 
 const Navbar = () => {
@@ -21,7 +22,10 @@ const Navbar = () => {
   const isCartOpen = useSelector(selectIsCartOpen);
   const cartCount = useSelector(selectCartCount);
   const openCartHandler = () => dispatch(setIsCartOpen(!isCartOpen));
-  const signOutHandler = () => signOut({ callbackUrl: "/" });
+  const signOutHandler = async () => {
+    await signOut({ redirect: false });
+    Router.push("/");
+  };
 
   useEffect(() => {
     const setNavSticky = () => {
