@@ -6,9 +6,9 @@ import { useDispatch } from "react-redux";
 
 import { setCartItemsFromLocalStorage } from "../store/cart/cart.action";
 import { setFavItemsFromLocalStorage } from "../store/user/user.action";
-import Footer from "./Navigation/footer/Footer";
+import Footer from "./Navigation/Footer/Footer";
 import Meta from "./Meta";
-import Navbar from "./Navigation/navbar/Navbar";
+import Navbar from "./Navigation/Navbar/Navbar";
 import CartBar from "./Product/CartBar/CartBar";
 
 const Layout = ({ children }) => {
