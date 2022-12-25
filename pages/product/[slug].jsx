@@ -11,18 +11,25 @@ import {
   BsCartCheckFill,
 } from "react-icons/bs";
 
+import ProductBanner from "../../assets/img/hero-2.jpg";
 import { addItemToCart, setIsCartOpen } from "../../store/cart/cart.action";
 import { selectCartItems } from "../../store/cart/cart.selector";
 
 import { client, urlFor } from "../../lib/client";
-import Sidebar from "../../components/Navigation/sidebar/Sidebar";
-import Hero from "../../components/Hero/Hero";
-import ProductBanner from "../../assets/img/hero-2.jpg";
-import CategoryBar from "../../components/CategoryBar/CategoryBar";
+// import Sidebar from "../../components/Navigation/sidebar/Sidebar";
+// import Hero from "../../components/Hero/Hero";
+// import CategoryBar from "../../components/CategoryBar/CategoryBar";
+// import Header from "../../components/Header/Header";
+// import Meta from "../../components/Meta";
+import {
+  Sidebar,
+  Hero,
+  CategoryBar,
+  Header,
+  Meta,
+} from "../../components/index";
 
 import styles from "./product-details.module.scss";
-import Header from "../../components/Header/Header";
-import Meta from "../../components/Meta";
 
 const ProductDetails = ({ product, categories }) => {
   const {

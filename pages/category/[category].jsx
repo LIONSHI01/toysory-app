@@ -1,14 +1,20 @@
 import React from "react";
 // import { useSelector } from "react-redux";
-
 // import { selectCategories } from "../../store/product/product.selector";
 import { client } from "../../lib/client";
-import CategoryBar from "../../components/CategoryBar/CategoryBar";
-import Header from "../../components/Header/Header";
-import Hero from "../../components/Hero/Hero";
-import Sidebar from "../../components/Navigation/sidebar/Sidebar";
+// import CategoryBar from "../../components/CategoryBar/CategoryBar";
+// import Header from "../../components/Header/Header";
+// import Hero from "../../components/Hero/Hero";
+// import Sidebar from "../../components/Navigation/sidebar/Sidebar";
+// import ProductList from "../../components/Product/ProductList/ProductList";
 
-import ProductList from "../../components/Product/ProductList/ProductList";
+import {
+  CategoryBar,
+  Header,
+  Hero,
+  Sidebar,
+  ProductList,
+} from "../../components/index";
 
 import classes from "./category.module.scss";
 import Meta from "../../components/Meta";

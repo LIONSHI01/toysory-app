@@ -8,6 +8,10 @@ import Layout from "./Layout";
 import Meta from "./Meta";
 import AboutBox from "./AboutBox/AboutBox";
 import CartBar from "./Product/CartBar/CartBar";
+import Sidebar from "./Sidebar/Sidebar";
+import ProductList from "./Product/ProductList/ProductList";
+import Header from "./Header/Header";
+import CategoryBar from "./CategoryBar/CategoryBar";
 
 export {
   Footer,
@@ -20,4 +24,8 @@ export {
   Meta,
   AboutBox,
   CartBar,
+  Sidebar,
+  ProductList,
+  Header,
+  CategoryBar,
 };

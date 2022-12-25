@@ -7,10 +7,12 @@ import {
 } from "../../../store/user/user.action";
 import { selectFavArr } from "../../../store/user/user.selector";
 
-import CategoryBar from "../../../components/CategoryBar/CategoryBar";
-import Header from "../../../components/Header/Header";
-import Hero from "../../../components/Hero/Hero";
-import Sidebar from "../../../components/Navigation/sidebar/Sidebar";
+// import CategoryBar from "../../../components/CategoryBar/CategoryBar";
+// import Header from "../../../components/Header/Header";
+// import Hero from "../../../components/Hero/Hero";
+// import Sidebar from "../../../components/Navigation/sidebar/Sidebar";
+
+import { CategoryBar, Header, Hero, Sidebar } from "../../../components/index";
 
 import ProductList from "../../../components/Product/ProductList/ProductList";
 import heroImg from "../../../assets/img/hero-3.webp";

@@ -2,9 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { BsTwitter } from "react-icons/bs";
-import { ImFacebook } from "react-icons/im";
-import { AiFillInstagram } from "react-icons/ai";
+import { BsTwitter, ImFacebook, AiFillInstagram } from "../ReactIcons/index";
 
 import styles from "./Footer.module.scss";
 import logoImage from "../../assets/brand/logo.png";

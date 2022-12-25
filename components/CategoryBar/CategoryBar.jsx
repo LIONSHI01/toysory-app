@@ -1,5 +1,6 @@
 import React from "react";
-import { MdSmartToy } from "react-icons/md";
+
+import { MdSmartToy } from "../ReactIcons/index";
 
 import classes from "./CategoryBar.module.scss";
 

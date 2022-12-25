@@ -1,15 +1,24 @@
 import React from "react";
 
 import { client } from "../../lib/client";
-import CategoryBar from "../../components/CategoryBar/CategoryBar";
-import Header from "../../components/Header/Header";
-import Hero from "../../components/Hero/Hero";
-import Sidebar from "../../components/Navigation/sidebar/Sidebar";
+// import CategoryBar from "../../components/CategoryBar/CategoryBar";
+// import Header from "../../components/Header/Header";
+// import Hero from "../../components/Hero/Hero";
+// import Sidebar from "../../components/Navigation/sidebar/Sidebar";
+// import ProductList from "../../components/Product/ProductList/ProductList";
+// import Meta from "../../components/Meta";
 
-import ProductList from "../../components/Product/ProductList/ProductList";
+import {
+  CategoryBar,
+  Header,
+  Hero,
+  Sidebar,
+  ProductList,
+  Meta,
+} from "../../components/index";
+
 import heroImg from "../../assets/img/hero-3.webp";
 import classes from "./index.module.scss";
-import Meta from "../../components/Meta";
 
 const Product = ({ products, categories }) => {
   return (

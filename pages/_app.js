@@ -14,7 +14,8 @@ import "../styles/Hero.css";
 import "../styles/Navbar.css";
 import "../styles/InputForm.css";
 
-import Layout from "../components/Layout";
+import { Layout } from "../components/index";
+// import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
   function CommonLayout(page) {
