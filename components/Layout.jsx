@@ -4,7 +4,6 @@ import NProgress from "nprogress";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { toast } from "react-hot-toast";
 import { setCartItemsFromLocalStorage } from "../store/cart/cart.action";
 import { setFavItemsFromLocalStorage } from "../store/user/user.action";
 import Footer from "./Navigation/footer/Footer";

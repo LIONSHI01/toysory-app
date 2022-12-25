@@ -9,7 +9,7 @@ const handler = async (req, res) => {
     // console.log(req.body);
     const { email, password, favorites } = req.body;
 
-    console.log(email, password);
+    // console.log(email, password);
     // VALIDATE INPUT
     // if (!email || !email.include("@") || !password || !password.length > 7) {
     //   res.status(422).json({

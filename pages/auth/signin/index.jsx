@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import Router from "next/router";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
-import InputForm from "../../../components/InputForm/InputForm";
 
+import InputForm from "../../../components/InputForm/InputForm";
 import classes from "./index.module.scss";
 
 const INITIAL_FORM_FIELDS = {
