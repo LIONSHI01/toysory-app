@@ -7,7 +7,7 @@ import { ImFacebook } from "react-icons/im";
 import { AiFillInstagram } from "react-icons/ai";
 
 import styles from "./Footer.module.scss";
-import logoImage from "../../../assets/brand/logo.png";
+import logoImage from "../../assets/brand/logo.png";
 
 const Footer = () => {
   return (

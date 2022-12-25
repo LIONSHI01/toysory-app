@@ -9,11 +9,10 @@ import Router from "next/router";
 import {
   selectIsCartOpen,
   selectCartCount,
-} from "../../../store/cart/cart.selector";
-import { setIsCartOpen } from "../../../store/cart/cart.action";
+} from "../../store/cart/cart.selector";
+import { setIsCartOpen } from "../../store/cart/cart.action";
 import { BsHandbag } from "react-icons/bs";
-
-import logoImg from "../../../assets/brand/logo.png";
+import logoImg from "../../assets/brand/logo.png";
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
