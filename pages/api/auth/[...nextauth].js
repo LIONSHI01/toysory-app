@@ -15,7 +15,7 @@ export default NextAuth({
       credentials: {},
       async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        // console.log(credentials);
+
         const { email, password } = credentials;
         await connectMongo();
         const user = await User.findOne({ email: email });
@@ -30,8 +30,6 @@ export default NextAuth({
           throw Error("Invalid password, please try again!");
         }
 
-        // Any object returned will be saved in `user` property of the JWT
-        // console.log(user);
         return user;
       },
     }),
@@ -40,6 +38,22 @@ export default NextAuth({
     signIn: "/auth/signin",
   },
   secret: process.env.NEXT_PUBLIC_JWT_SECRET,
+  // callbacks: {
+  //   async session({ session, token, user }) {
+  //     // Fetch UserProfile from DB
+  //     await connectMongo();
+
+  //     const userProfile = await User.findOne({ email: token?.email });
+
+  //     const userData = userProfile;
+
+  //     session.accessToken = token.accessToken;
+  //     session.user.id = token.id;
+  //     session.profile = userData;
+
+  //     return session;
+  //   },
+  // },
 });
 
 // export default NextAuth({

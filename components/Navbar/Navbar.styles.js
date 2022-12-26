@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { device } from "../../styles/devices";
+
 const stickyStyles = css`
   position: fixed;
   top: 0;
@@ -11,7 +12,7 @@ const stickyStyles = css`
 `;
 
 export const NavbarContainer = styled.nav`
-  padding: 2.5rem 0;
+  padding: 2rem 0;
 
   ${(props) => props.sticky && stickyStyles}
 
@@ -110,11 +111,23 @@ export const NavbarContainer = styled.nav`
       text-align: center;
       font-size: var(--fs-s);
       color: var(--white);
+
+      @media ${device.mobileL} {
+        width: 20px;
+        height: 20px;
+        top: -40%;
+        right: -40%;
+      }
     }
 
     &__icon {
       width: 2.5rem;
       height: 2.5rem;
+
+      @media ${device.mobileL} {
+        width: 3rem;
+        height: 3rem;
+      }
     }
 
     &__accountBox {

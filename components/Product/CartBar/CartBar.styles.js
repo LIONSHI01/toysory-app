@@ -9,6 +9,7 @@ const openStyles = css`
 export const CartBarContainer = styled.div`
   .cartbar {
     width: 50rem;
+    max-width: 80%;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -16,10 +17,10 @@ export const CartBarContainer = styled.div`
     display: grid;
     grid-template-rows: max-content 1fr max-content;
     align-items: flex-start;
-
+    z-index: 10000;
     background-color: var(--white);
     padding: 4rem 2rem;
-    z-index: 1000;
+
     overflow-y: auto;
     transform: translateX(100%);
     transition: all 0.3s cubic-bezier(0.81, -0.12, 0.35, 1.05);
@@ -32,15 +33,17 @@ export const CartBarContainer = styled.div`
 
     .cartbar__goback-box {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 1rem;
-      cursor: pointer;
       font-size: var(--fs-x);
       transition: all 0.3s;
       text-transform: uppercase;
       margin-left: 2rem;
       margin-bottom: var(--mb-m);
+      cursor: pointer;
     }
+
     .cartbar__goback-box:hover {
       transform: translateX(-10px);
     }
@@ -53,8 +56,6 @@ export const CartBarContainer = styled.div`
 
     .cartItemList {
       position: relative;
-
-      /* background-color: orangered; */
     }
 
     .cartItem__summary {

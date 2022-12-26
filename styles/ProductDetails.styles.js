@@ -211,8 +211,7 @@ export const ProductDetailsPageContainer = styled.div`
     &__desc {
       width: 50%;
       margin-bottom: var(--mb-m);
-
-      font-size: var(--fs-s);
+      font-size: var(--default-fs);
       color: var(--black-light-2);
       line-height: 1.7;
 

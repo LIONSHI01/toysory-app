@@ -1,13 +1,29 @@
 import React from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import Router from "next/router";
+import { signOut } from "next-auth/react";
 import { navbarItems } from "../../assets/constants";
 import { IoMdClose } from "../ReactIcons";
 import { IconButton, Overlay } from "../index";
-import { SidebarContainer } from "./MobileSideBar.styles";
+import { SidebarContainer, UserInfoBox } from "./MobileSideBar.styles";
 
 const MobileSideBar = ({ showup = true, setShowup }) => {
+  const { status, data: session } = useSession();
+  console.log(session);
+
+  const username =
+    session?.user?.email?.split("@")[0].length <= 10
+      ? session?.user?.email?.split("@")?.[0]
+      : ` ${session?.user?.email?.split("@")?.[0]?.slice(0, 10)} ...`;
+
   const closeSidebarHandler = () => {
     setShowup(false);
+  };
+
+  const signOutHandler = async () => {
+    await signOut({ redirect: false });
+    Router.push("/");
   };
 
   return (
@@ -19,7 +35,11 @@ const MobileSideBar = ({ showup = true, setShowup }) => {
             <IoMdClose size={30} />
           </IconButton>
         </div>
-
+        {session && (
+          <UserInfoBox>
+            <p className="username">{username}</p>
+          </UserInfoBox>
+        )}
         <ul className="links">
           {navbarItems.map(({ title, url }) => (
             <li className="item" key={title}>
@@ -31,6 +51,27 @@ const MobileSideBar = ({ showup = true, setShowup }) => {
             </li>
           ))}
         </ul>
+        <div className="navbar__authentication">
+          {status === "unauthenticated" || status === "loading" ? (
+            <div className="auth-box">
+              <Link href="/auth/signin">
+                <a className="link">Sign In</a>
+              </Link>
+              <Link href="/auth/register">
+                <a className="link">Register</a>
+              </Link>
+            </div>
+          ) : (
+            <div className="accountBox">
+              <Link href="/account">
+                <a className="link">Account</a>
+              </Link>
+              <a className="signout-btn" onClick={signOutHandler}>
+                Sign Out
+              </a>
+            </div>
+          )}
+        </div>
       </SidebarContainer>
     </>
   );

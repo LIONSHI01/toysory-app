@@ -41,9 +41,6 @@ export const SidebarContainer = styled.div`
     list-style: none;
   }
 
-  .item {
-  }
-
   .link {
     &:visited,
     &:link {
@@ -57,5 +54,37 @@ export const SidebarContainer = styled.div`
     &:active {
       color: var(--red);
     }
+  }
+
+  .auth-box,
+  .accountBox {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .signout-btn {
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--red);
+    font-size: var(--fs-xxl);
+    cursor: pointer;
+
+    :hover {
+      color: var(--black-light-2);
+    }
+  }
+`;
+
+export const UserInfoBox = styled.div`
+  position: absolute;
+  top: 3.5rem;
+  left: 3.5rem;
+
+  .username {
+    font-size: var(--fs-xxl);
+    text-transform: capitalize;
   }
 `;
