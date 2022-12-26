@@ -12,8 +12,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { urlFor } from "../../../lib/client";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { MdDelete } from "react-icons/md";
+
+import {
+  AiOutlineMinus,
+  AiOutlinePlus,
+  MdDelete,
+} from "../../ReactIcons/index";
+
 import classes from "./CheckoutItem.module.scss";
 
 const CheckoutItem = ({ product }) => {

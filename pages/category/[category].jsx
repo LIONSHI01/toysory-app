@@ -1,7 +1,8 @@
 import React from "react";
+
+import { client } from "../../lib/client";
 // import { useSelector } from "react-redux";
 // import { selectCategories } from "../../store/product/product.selector";
-import { client } from "../../lib/client";
 // import CategoryBar from "../../components/CategoryBar/CategoryBar";
 // import Header from "../../components/Header/Header";
 // import Hero from "../../components/Hero/Hero";

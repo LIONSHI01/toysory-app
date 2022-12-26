@@ -15,11 +15,10 @@ import {
   BsHeartFill,
   BsFillBagCheckFill,
   BsCartCheckFill,
-} from "react-icons/bs";
-
-import { MdShoppingCart } from "react-icons/md";
-import { FaAngleDown } from "react-icons/fa";
-import { GiMagnifyingGlass } from "react-icons/gi";
+  MdShoppingCart,
+  FaAngleDown,
+  GiMagnifyingGlass,
+} from "../../ReactIcons/index";
 
 // CSS file in /styles folder
 const ProductCard = ({ product }) => {

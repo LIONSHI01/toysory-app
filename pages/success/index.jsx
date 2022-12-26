@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { BsCheckCircleFill } from "react-icons/bs";
+import { BsCheckCircleFill } from "../../components/ReactIcons/index";
 
 import classes from "./index.module.scss";
 

@@ -2,21 +2,20 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import toast from "react-hot-toast";
-
 import getStripe from "../lib/getStripe";
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
 
 import { selectCartItems, selectCartTotal } from "../store/cart/cart.selector";
 
-import { FaShippingFast } from "react-icons/fa";
-import { SiCashapp } from "react-icons/si";
-import { MdSystemSecurityUpdateGood } from "react-icons/md";
 import {
+  FaShippingFast,
+  SiCashapp,
+  MdSystemSecurityUpdateGood,
   AiOutlineLeft,
   AiOutlineRight,
   AiOutlineFileDone,
-} from "react-icons/ai";
+} from "../components/ReactIcons/index";
 
 import CartImg from "../assets/img/cart.webp";
 import CheckoutItem from "../components/Product/CheckoutItem/CheckoutItem";

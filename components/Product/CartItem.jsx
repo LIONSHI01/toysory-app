@@ -9,8 +9,9 @@ import {
   minusItemFromCart,
   removeItemFromCart,
 } from "../../store/cart/cart.action";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { MdDelete } from "react-icons/md";
+
+import { AiOutlineMinus, AiOutlinePlus, MdDelete } from "../ReactIcons/index";
+
 import { selectCartItems } from "../../store/cart/cart.selector";
 
 const CartItem = ({ product }) => {

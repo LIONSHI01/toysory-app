@@ -3,10 +3,8 @@ import Stripe from "stripe";
 const stripe = new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`);
 
 export default async function handler(req, res) {
-  // console.log(req.body.thumbImage);
   if (req.method === "POST") {
     try {
-      // console.log(req.body);
       const params = {
         submit_type: "pay",
         mode: "payment",

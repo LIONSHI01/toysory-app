@@ -19,7 +19,7 @@ Meta.defaultProps = {
   title: "Education Expert",
   keywords: "Education, Children, STEM, Toys",
   description:
-    "Smartdragon is an international education organization, providing professional educational toys to children in STEM areas.",
+    "Toysory is an international education organization, providing professional educational toys to children in STEM areas.",
 };
 
 export default Meta;

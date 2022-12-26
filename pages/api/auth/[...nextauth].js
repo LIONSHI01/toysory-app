@@ -3,7 +3,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 import { connectMongo } from "../../../lib/db";
 import User from "../../../models/userModel";
-
 import { verifyPassword } from "../../../lib/hashPassword";
 
 export default NextAuth({
@@ -16,7 +15,7 @@ export default NextAuth({
       credentials: {},
       async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        console.log(credentials);
+        // console.log(credentials);
         const { email, password } = credentials;
         await connectMongo();
         const user = await User.findOne({ email: email });

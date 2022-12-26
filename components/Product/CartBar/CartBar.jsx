@@ -8,8 +8,8 @@ import {
   selectCartCount,
   selectCartTotal,
 } from "../../../store/cart/cart.selector";
-import { ImArrowLeft2 } from "react-icons/im";
-import { BsBagPlus } from "react-icons/bs";
+
+import { ImArrowLeft2, BsBagPlus } from "../../ReactIcons/index";
 
 import { setIsCartOpen } from "../../../store/cart/cart.action";
 import CartItem from "../CartItem";

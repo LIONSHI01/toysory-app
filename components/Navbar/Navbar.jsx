@@ -11,15 +11,23 @@ import {
   selectCartCount,
 } from "../../store/cart/cart.selector";
 import { setIsCartOpen } from "../../store/cart/cart.action";
-import { BsHandbag } from "react-icons/bs";
 import logoImg from "../../assets/brand/logo.png";
+import { BsHandbag, FiMenu } from "../ReactIcons/index";
+import { MobileSideBar } from "..";
+import { NavbarContainer } from "./Navbar.styles";
 
 const Navbar = () => {
-  const [sticky, setSticky] = useState(false);
+  // CONFIGURATION
   const { status, data: session } = useSession();
   const dispatch = useDispatch();
   const isCartOpen = useSelector(selectIsCartOpen);
   const cartCount = useSelector(selectCartCount);
+
+  // STATES
+  const [sticky, setSticky] = useState(false);
+  const [showMobileNav, setShowMobileNav] = useState(false);
+
+  // HANDLERS
   const openCartHandler = () => dispatch(setIsCartOpen(!isCartOpen));
   const signOutHandler = async () => {
     await signOut({ redirect: false });
@@ -38,63 +46,74 @@ const Navbar = () => {
   });
 
   return (
-    <nav className={`${sticky ? "navbar sticky" : "navbar"}`}>
-      <div className="container">
-        <div className="navbar__container">
-          <Link href="/">
-            <div className="navbar__logoBox">
-              <Image
-                src={logoImg}
-                objectFit="contain"
-                alt="Smartdragon Logo"
-                className="navbar__logo"
-              />
-            </div>
-          </Link>
-          <ul className="navbar__links">
-            <li>
-              <Link href="/product">
-                <a className="navbar__link">Markeplace</a>
+    <>
+      <MobileSideBar showup={showMobileNav} setShowup={setShowMobileNav} />
+      <NavbarContainer sticky={sticky}>
+        <div className="container">
+          <div className="navbar">
+            <div className="navbar__container">
+              <Link href="/">
+                <div className="navbar__logoBox">
+                  <Image
+                    src={logoImg}
+                    objectFit="cover"
+                    alt="toysory Logo"
+                    className="navbar__logo"
+                  />
+                </div>
               </Link>
-            </li>
-            <li>
-              <Link href="/account/favorite">
-                <a className="navbar__link">Favorites</a>
-              </Link>
-            </li>
-            <li>
-              <div className="navbar__authentication">
-                {status === "unauthenticated" || status === "loading" ? (
-                  <>
-                    <Link href="/auth/signin">
-                      <a className="navbar__login">Sign In</a>
-                    </Link>
-                    <Link href="/auth/register">
-                      <a className="navbar__register">Register</a>
-                    </Link>
-                  </>
-                ) : (
-                  <div className="navbar__accountBox">
-                    <Link href="/account">
-                      <a className="navbar__account">Account</a>
-                    </Link>
-                    <a className="navbar__signout" onClick={signOutHandler}>
-                      Sign Out
-                    </a>
+              <div
+                className="navbar__mobileNavBtn"
+                onClick={() => setShowMobileNav((prev) => !prev)}
+              >
+                <FiMenu size={25} />
+              </div>
+              <ul className="navbar__links">
+                <li>
+                  <Link href="/product">
+                    <a className="navbar__link">Markeplace</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/account/favorite">
+                    <a className="navbar__link">Favorites</a>
+                  </Link>
+                </li>
+                <li>
+                  <div className="navbar__authentication">
+                    {status === "unauthenticated" || status === "loading" ? (
+                      <>
+                        <Link href="/auth/signin">
+                          <a className="navbar__login">Sign In</a>
+                        </Link>
+                        <Link href="/auth/register">
+                          <a className="navbar__register">Register</a>
+                        </Link>
+                      </>
+                    ) : (
+                      <div className="navbar__accountBox">
+                        <Link href="/account">
+                          <a className="navbar__account">Account</a>
+                        </Link>
+                        <a className="navbar__signout" onClick={signOutHandler}>
+                          Sign Out
+                        </a>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            </li>
-            <li>
-              <div className="navbar__cart" onClick={openCartHandler}>
-                <BsHandbag className="navbar__icon" />
-                <span className="navbar__cartQty">{cartCount}</span>
-              </div>
-            </li>
-          </ul>
+                </li>
+                <li>
+                  <div className="navbar__cart" onClick={openCartHandler}>
+                    <BsHandbag className="navbar__icon" />
+                    <span className="navbar__cartQty">{cartCount}</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-    </nav>
+      </NavbarContainer>
+    </>
   );
 };
 

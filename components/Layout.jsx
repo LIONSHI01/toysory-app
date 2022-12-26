@@ -1,19 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Router from "next/router";
 import NProgress from "nprogress";
-import { useEffect } from "react";
+
 import { useDispatch } from "react-redux";
 
 import { setCartItemsFromLocalStorage } from "../store/cart/cart.action";
 import { setFavItemsFromLocalStorage } from "../store/user/user.action";
-// import Footer from "./Footer/Footer";
-// import Meta from "./Meta";
-// import Navbar from "./Navigation/Navbar/Navbar";
-// import CartBar from "./Product/CartBar/CartBar";
 
-import { Footer, Meta, Navbar, CartBar } from "./index";
+import { Footer, Meta, Navbar, CartBar, MobileSideBar } from "./index";
 
 const Layout = ({ children }) => {
+  // STATES
+
   // Add LOADING screen on route change event
   Router.onRouteChangeStart = () => {
     NProgress.start();
@@ -39,6 +37,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Meta />
+
       <CartBar />
       <Navbar />
       {children}

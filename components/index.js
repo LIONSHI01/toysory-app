@@ -12,6 +12,9 @@ import Sidebar from "./Sidebar/Sidebar";
 import ProductList from "./Product/ProductList/ProductList";
 import Header from "./Header/Header";
 import CategoryBar from "./CategoryBar/CategoryBar";
+import MobileSideBar from "./MobileSideBar/MobileSideBar";
+import IconButton from "./IconButton/IconButton";
+import Overlay from "./Overlay/Overlay";
 
 export {
   Footer,
@@ -28,4 +31,7 @@ export {
   ProductList,
   Header,
   CategoryBar,
+  MobileSideBar,
+  IconButton,
+  Overlay,
 };

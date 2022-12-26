@@ -5,8 +5,9 @@ import Image from "next/image";
 import { urlFor } from "../../../lib/client";
 
 import styles from "./ProductPreviewCard.module.scss";
-import { MdShoppingCart } from "react-icons/md";
-import previewImg1 from "../../../assets/img/product-preview/preview-1.jpg";
+
+import { MdShoppingCart } from "../../ReactIcons/index";
+// import previewImg1 from "../../../assets/img/product-preview/preview-1.jpg";
 
 const ProductPreviewCard = ({ product }) => {
   const { thumbImage, salePrice, name, slug } = product;

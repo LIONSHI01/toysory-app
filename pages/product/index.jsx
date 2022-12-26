@@ -1,12 +1,6 @@
 import React from "react";
 
 import { client } from "../../lib/client";
-// import CategoryBar from "../../components/CategoryBar/CategoryBar";
-// import Header from "../../components/Header/Header";
-// import Hero from "../../components/Hero/Hero";
-// import Sidebar from "../../components/Navigation/sidebar/Sidebar";
-// import ProductList from "../../components/Product/ProductList/ProductList";
-// import Meta from "../../components/Meta";
 
 import {
   CategoryBar,
