@@ -23,9 +23,10 @@ import {
   CategoryBar,
   Header,
   Meta,
+  Button,
 } from "../../components/index";
 
-import styles from "./product-details.module.scss";
+import { ProductDetailsPageContainer } from "../../styles/ProductDetails.styles";
 
 const ProductDetails = ({ product, categories }) => {
   const {
@@ -113,130 +114,138 @@ const ProductDetails = ({ product, categories }) => {
         keywords={`${category}, Educational, Toys, Experts, Children`}
         description={description}
       />
-      <Hero banner={urlFor(bannerImage && bannerImage[0]) || ProductBanner} />
+      <Hero banner={urlFor(bannerImage?.[0]) || ProductBanner} />
       <Header primary="Shopping" secondary="Product Details" />
-      <div className="container">
-        <main className={styles.product__main}>
-          <Sidebar categories={categories} />
-          <section className={styles.product}>
-            <CategoryBar category={category} />
+      <ProductDetailsPageContainer>
+        <div className="container">
+          <main className="product__main">
+            <div className="sidebar-container">
+              <Sidebar categories={categories} />
+            </div>
+            <section className="product">
+              <CategoryBar category={category} />
 
-            <div className={styles.intro}>
-              <div className={styles.intro__image}>
-                <Image
-                  src={urlFor(thumbImage && thumbImage[0])}
-                  width={800}
-                  height={800}
-                  alt="product name"
-                ></Image>
-              </div>
-
-              <form className={styles.intro__content}>
-                <h1 className={styles.intro__name}>{name}</h1>
-                <span className={styles.intro__setPrice}>
-                  Original Price : HK$ {originalPrice}
-                </span>
-                <span className={styles.intro__salePrice}>
-                  Sale Price : <span>HK$ {salePrice}</span>
-                </span>
-
-                {specification?.length >= 1 && (
-                  <div className={styles.intro__specifications}>
-                    <span>Specifications :</span>
-                    <select
-                      name="selectType"
-                      id="specs"
-                      onChange={onChangeFormHandler}
-                    >
-                      <option defaultValue disabled value="">
-                        Please select type
-                      </option>
-                      {specification.map((spec, i) => (
-                        <option key={i} value={spec}>
-                          {spec}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                )}
-
-                <div className={styles.intro__amount}>
-                  <span>Amount :</span>
-                  <span className={styles.intro__minus} onClick={minusQty}>
-                    <AiOutlineMinus className={styles.intro__amountIcon} />
-                  </span>
-                  <input
-                    type="number"
-                    className={styles.intro__number}
-                    name="quantity"
-                    min={1}
-                    value={quantity}
-                    onChange={onChangeFormHandler}
+              <div className="intro">
+                <div className="intro__image">
+                  <Image
+                    src={urlFor(thumbImage?.[0])}
+                    width={800}
+                    height={800}
+                    alt="product name"
                   />
+                </div>
 
-                  <span className={styles.intro__plus} onClick={plusQty}>
-                    <AiOutlinePlus className={styles.intro__amountIcon} />
+                <form className="intro__content">
+                  <h1 className="intro__name">{name}</h1>
+                  <span className="intro__setPrice">
+                    Original Price : HK$ {originalPrice}
                   </span>
-                </div>
-                <div className={styles.intro__buttons}>
-                  <button
-                    type="button"
-                    className={styles.intro__add_to_cart}
-                    onClick={submitHandler}
-                  >
-                    <BsCartCheckFill className={styles.intro__button_icon} />
-                    <span className={styles.intro__buttonText}>
-                      Add to Cart
+                  <span className="intro__salePrice">
+                    Sale Price : <span>HK$ {salePrice}</span>
+                  </span>
+
+                  {specification?.length >= 1 && (
+                    <div className="intro__specifications">
+                      <span>Specifications :</span>
+                      <select
+                        name="selectType"
+                        id="specs"
+                        onChange={onChangeFormHandler}
+                      >
+                        <option defaultValue disabled value="">
+                          Please select type
+                        </option>
+                        {specification.map((spec, i) => (
+                          <option key={i} value={spec}>
+                            {spec}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+
+                  <div className="intro__amount">
+                    <span>Amount :</span>
+                    <span className="intro__minus" onClick={minusQty}>
+                      <AiOutlineMinus className="intro__amountIcon" />
                     </span>
-                  </button>
-                  <button
-                    type="button"
-                    className={styles.intro__buy_now}
-                    onClick={buyNowHandler}
-                  >
-                    <BsFillBagCheckFill className={styles.intro__button_icon} />
-                    <span className={styles.intro__buttonText}>Buy Now</span>
-                  </button>
-                  <button
-                    type="button"
-                    className={styles.intro__add_to_favorite}
-                  >
-                    <BsHeartFill className={styles.intro__button_icon} />
-                    <span className={styles.intro__buttonText}>
-                      Add to Favorite
-                    </span>
-                  </button>
-                </div>
-              </form>
-            </div>
-            <div className={styles.details}>
-              <div className={styles.details__heading}>Details</div>
-              <p className={styles.details__desc}>
-                <span>Description:</span>
-                <br />
-                {description}
-              </p>
-              <div className={styles.details__imageGroup}>
-                {detailImage?.map((image, i) => (
-                  <div key={i} className={styles.details__imageBox}>
-                    <Image
-                      src={urlFor(image)}
-                      width={800}
-                      height={800}
-                      alt={`${name} ${i}`}
-                      objectFit="contain"
-                      loading="lazy"
+                    <input
+                      type="number"
+                      className="intro__number"
+                      name="quantity"
+                      min={1}
+                      value={quantity}
+                      onChange={onChangeFormHandler}
                     />
+
+                    <span className="intro__plus" onClick={plusQty}>
+                      <AiOutlinePlus className="intro__amountIcon" />
+                    </span>
                   </div>
-                ))}
+                  <div className="intro__buttons">
+                    <Button
+                      color="grey"
+                      height="4.5rem"
+                      width="100%"
+                      onClick={submitHandler}
+                      type="button"
+                    >
+                      <BsCartCheckFill />
+                      <span>Add to Cart</span>
+                    </Button>
+
+                    <Button
+                      color="grey"
+                      height="4.5rem"
+                      width="100%"
+                      onClick={buyNowHandler}
+                      type="button"
+                    >
+                      <BsFillBagCheckFill />
+                      <span>Buy Now</span>
+                    </Button>
+
+                    <Button
+                      color="red"
+                      height="4.5rem"
+                      width="100%"
+                      type="button"
+                    >
+                      <BsHeartFill />
+                      <span>Add to Favorite</span>
+                    </Button>
+                  </div>
+                </form>
               </div>
-            </div>
-            <Link href="/">
-              <a className={`btn`}>back</a>
-            </Link>
-          </section>
-        </main>
-      </div>
+              <div className="details">
+                <div className="details__heading">Details</div>
+                <p className="details__desc">
+                  <span>Description:</span>
+                  <br />
+                  {description}
+                </p>
+                <div className="details__imageGroup">
+                  {detailImage?.map((image, i) => (
+                    <div key={i} className="details__imageBox">
+                      <Image
+                        src={urlFor(image)}
+                        width={800}
+                        height={800}
+                        alt={`${name} ${i}`}
+                        objectFit="contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <Link href="/">
+                <a className={`btn`}>back</a>
+              </Link>
+            </section>
+          </main>
+        </div>
+      </ProductDetailsPageContainer>
     </>
   );
 };

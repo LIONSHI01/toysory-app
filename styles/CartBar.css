@@ -1,4 +1,4 @@
-.cartbar {
+/* .cartbar {
   width: 50rem;
   height: 100vh;
   position: fixed;
@@ -18,8 +18,8 @@
   box-shadow: var(--box-shadow-m);
   visibility: none;
   opacity: 0;
-}
-
+} */
+/* 
 .cartbar.open {
   transform: translateX(0%);
   visibility: visible;
@@ -49,8 +49,6 @@
 
 .cartItemList {
   position: relative;
-
-  /* background-color: orangered; */
 }
 
 .cartItem__summary {
@@ -88,4 +86,4 @@
 
 .cartbar__checkout-btn:hover {
   background-color: var(--blue-dark);
-}
+} */

@@ -16,10 +16,46 @@ html {
   overflow-x: hidden;
 }
 
+@media only screen and (max-width: 90em) {
+  html {
+    font-size: 62.5%;
+  }
+}
+
+@media only screen and (max-width: 64em) {
+  html {
+    font-size: 62.5%;
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media only screen and (max-width: 26.56em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media only screen and (max-width: 23.44em) {
+  html {
+    font-size: 45%;
+  }
+}
+
+@media only screen and (max-width: 20em) {
+  html {
+    font-size: 40%;
+  }
+}
+
 body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-  /* position: relative; */
+
   width: 100%;
   margin: 0;
   padding: 0;
@@ -62,10 +98,6 @@ body {
   --grey-light-1: #eaeaea;
   --grey-light-2: #eeeeee;
   --grey-light-3: #f7f7f7;
-  /* 
-  --grey-dark-1: #5c5c5c;
-  --grey-dark-2: #474747;
-  --grey-dark-3: #333; */
 
   --white: #fff;
 

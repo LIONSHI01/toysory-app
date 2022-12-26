@@ -19,7 +19,8 @@ import {
   MdDelete,
 } from "../../ReactIcons/index";
 
-import classes from "./CheckoutItem.module.scss";
+// import classes from "./CheckoutItem.module.scss";
+import { ItemContainer } from "./CheckoutItem.styles";
 
 const CheckoutItem = ({ product }) => {
   const { name, salePrice, thumbImage, slug, quantity, subTotal, selectType } =
@@ -35,44 +36,45 @@ const CheckoutItem = ({ product }) => {
     dispatch(removeItemFromCart(cartItems, product));
 
   return (
-    <div className={classes.cartItem}>
-      <div className={classes.cartItem__name_box}>
-        <div className={classes.cartItem__img_box}>
-          <Image
-            src={urlFor(thumbImage && thumbImage[0])}
-            width={70}
-            height={70}
-            alt="PRODUCT NAME"
-          />
+    <ItemContainer>
+      <div className="cartItem">
+        <div className="cartItem__name_box">
+          <div className="cartItem__img_box">
+            <Image
+              src={urlFor(thumbImage && thumbImage[0])}
+              alt="PRODUCT NAME"
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+            />
+          </div>
+          <Link href={`/product/${slug.current}`}>
+            <a className="cartItem__name">{name}</a>
+          </Link>
         </div>
-        <Link href={`/product/${slug.current}`}>
-          <a className={classes.cartItem__name}>{name}</a>
-        </Link>
-      </div>
-      <span>{selectType ? `Types: ${selectType}` : ""}</span>
-      <span>{`HK$ ${salePrice}`}</span>
-      <div className={classes.cartItem__qty_box}>
-        <span>Amount :</span>
-        <span
-          className={classes.cartItem__minus}
-          onClick={minusFromCartHandler}
-        >
-          <AiOutlineMinus className={classes.cartItem__amountIcon} />
+        <span className="cartItem__specifications">
+          {selectType ? `Types: ${selectType}` : ""}
         </span>
-        <span className={classes.cartItem__number}>{quantity}</span>
+        <span className="cartItem__unitPrice">{`HK$ ${salePrice}`}</span>
+        <div className="cartItem__qty_box">
+          <span>Amount</span>
+          <div className="cartItem__qty_box__adjuster">
+            <span className="cartItem__minus" onClick={minusFromCartHandler}>
+              <AiOutlineMinus className="cartItem__amountIcon" />
+            </span>
+            <span className="cartItem__number">{quantity}</span>
 
-        <span className={classes.cartItem__plus} onClick={addToCartHandler}>
-          <AiOutlinePlus className={classes.cartItem__amountIcon} />
-        </span>
+            <span className="cartItem__plus" onClick={addToCartHandler}>
+              <AiOutlinePlus className="cartItem__amountIcon" />
+            </span>
+          </div>
+        </div>
+        <span className="cartItem__subTotal">{`HK$ ${subTotal}`}</span>
+        <div className="cartItem__btn_remove" onClick={removeFromCartHandler}>
+          <MdDelete className="cartItem__remove_icon" />
+        </div>
       </div>
-      <span>{`HK$ ${subTotal}`}</span>
-      <div
-        className={classes.cartItem__btn_remove}
-        onClick={removeFromCartHandler}
-      >
-        <MdDelete className={classes.cartItem__remove_icon} />
-      </div>
-    </div>
+    </ItemContainer>
   );
 };
 

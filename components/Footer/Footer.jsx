@@ -2,76 +2,68 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { BsTwitter, ImFacebook, AiFillInstagram } from "../ReactIcons/index";
+import { SiMinutemailer } from "../ReactIcons/index";
+import { footerAboutLinks, socialLinks } from "../../assets/constants";
 
-import styles from "./Footer.module.scss";
 import logoImage from "../../assets/brand/logo.png";
+import {
+  MasterFramworkWrapper,
+  LogoColWrapper,
+  BusinessColWrapper,
+  SocialsColWrapper,
+  EmailBarContainer,
+  FooterContainer,
+} from "./Footer.styles";
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <div className="container">
-        <div className={styles.footer__main}>
-          <div className={styles.footer__logo_col}>
-            <Link href="/">
-              <div className={styles.footer__logo}>
-                <Image
-                  src={logoImage}
-                  alt="logo"
-                  width="80%"
-                  height="80%"
-                  objectFit="contain"
-                />
-              </div>
-            </Link>
+    <FooterContainer>
+      <MasterFramworkWrapper>
+        <LogoColWrapper>
+          <Image
+            src={logoImage}
+            alt="logo"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </LogoColWrapper>
+        <BusinessColWrapper>
+          <h4 className="about_col_heading">About</h4>
+          <div className="about_col_links">
+            {footerAboutLinks?.map(({ title, link }) => (
+              <Link key={title} href={link}>
+                <a className="about_col_link">{title}</a>
+              </Link>
+            ))}
           </div>
-          <ul className={styles.footer__links_col}>
-            <li>
-              <Link href="/">
-                <a className={styles.footer__link}>About</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a className={styles.footer__link}>Marketplace</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a className={styles.footer__link}>Shopping Guide</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a className={styles.footer__link}>Blog</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a className={styles.footer__link}>Contact</a>
-              </Link>
-            </li>
-          </ul>
-          <ul className={styles.footer__medias_col}>
-            <li>
-              <Link href="/">
-                <BsTwitter className={styles.footer__icon} />
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <ImFacebook className={styles.footer__icon} />
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <AiFillInstagram className={styles.footer__icon} />
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </footer>
+        </BusinessColWrapper>
+        <SocialsColWrapper>
+          <div className="socials_heading">Subscribe to our news letter</div>
+          <EmailBarContainer>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <input type="email" placeholder="example@gmail.com" />
+              <button className="btn_container" type="submit">
+                <SiMinutemailer size={20} className="icon" />
+              </button>
+            </form>
+          </EmailBarContainer>
+          <div className="socials_col_links">
+            {socialLinks?.map(({ link, icon }, i) => (
+              <a
+                key={i}
+                href={link}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="socials_col_link"
+              >
+                <div className="socials_col_icon_box">{icon}</div>
+              </a>
+            ))}
+          </div>
+        </SocialsColWrapper>
+      </MasterFramworkWrapper>
+    </FooterContainer>
   );
 };
 

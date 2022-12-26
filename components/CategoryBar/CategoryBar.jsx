@@ -2,19 +2,20 @@ import React from "react";
 
 import { MdSmartToy } from "../ReactIcons/index";
 
-import classes from "./CategoryBar.module.scss";
-
+import { CategoryBarContainer } from "./CategoryBar.styles";
 const CategoryBar = ({ category }) => {
   const display = category.replace("-", " ");
   return (
-    <div className={classes.category}>
-      <div className={classes.category__title}>
-        <div className={classes.category__icon_box}>
-          <MdSmartToy className={classes.category__icon} />
+    <CategoryBarContainer>
+      <div className="category">
+        <div className="category__title">
+          <div className="category__icon_box">
+            <MdSmartToy className="category__icon" />
+          </div>
+          <span className="category__name">{display}</span>
         </div>
-        <span className={classes.category__name}>{display}</span>
       </div>
-    </div>
+    </CategoryBarContainer>
   );
 };
 

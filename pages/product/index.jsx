@@ -12,28 +12,31 @@ import {
 } from "../../components/index";
 
 import heroImg from "../../assets/img/hero-3.webp";
-import classes from "./index.module.scss";
+// import classes from "./index.module.scss";
+import { ProductsPageContainer } from "../../styles/Products.styles";
 
 const Product = ({ products, categories }) => {
   return (
-    <div>
+    <>
       <Meta
         title="All Products"
         keywords="Educational, Toys, Experts, Children"
         description="You can find all the trendy products from here!"
       />
-      <Hero banner={heroImg} />
-      <Header primary="All Products" secondary="Shopping" />
-      <div className="container">
-        <main className={classes.products__main}>
-          <Sidebar categories={categories} />
-          <div className={classes.products__content}>
-            <CategoryBar category="All Products" />
-            <ProductList products={products} />
-          </div>
-        </main>
-      </div>
-    </div>
+      <ProductsPageContainer>
+        <Hero banner={heroImg} />
+        <Header primary="All Products" secondary="Shopping" />
+        <div className="container">
+          <main className="products__main">
+            <Sidebar categories={categories} />
+            <div className="products__content">
+              <CategoryBar category="All Products" />
+              <ProductList products={products} />
+            </div>
+          </main>
+        </div>
+      </ProductsPageContainer>
+    </>
   );
 };
 

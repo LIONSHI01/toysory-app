@@ -1,13 +1,15 @@
 import React from "react";
+
 import ProductCard from "../ProductCard/ProductCard";
-import classes from "./ProductList.module.scss";
+import { ListContainer } from "./ProductList.styles";
+
 const ProductList = ({ products }) => {
   return (
-    <div className={classes.productList}>
+    <ListContainer>
       {products?.map((product) => (
         <ProductCard key={product._id} product={product} />
       ))}
-    </div>
+    </ListContainer>
   );
 };
 

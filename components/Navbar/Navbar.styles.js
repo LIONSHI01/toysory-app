@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-
+import { device } from "../../styles/devices";
 const stickyStyles = css`
   position: fixed;
   top: 0;
@@ -22,13 +22,22 @@ export const NavbarContainer = styled.nav`
     &__container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       padding: 0 2rem;
+      height: 8rem;
+
+      @media ${device.tablet_portrait} {
+        justify-content: space-between;
+        height: 5rem;
+      }
     }
 
     &__logoBox {
       width: 6rem;
       cursor: pointer;
+
+      @media ${device.tablet_portrait} {
+        width: 4rem;
+      }
     }
 
     &__logo {
@@ -41,6 +50,12 @@ export const NavbarContainer = styled.nav`
       align-items: center;
       gap: 2rem;
       font-size: var(--default-fs);
+      margin-left: auto;
+      margin-right: 2rem;
+
+      @media ${device.tablet_portrait} {
+        display: none;
+      }
     }
 
     &__link {
@@ -124,6 +139,11 @@ export const NavbarContainer = styled.nav`
 
     &__mobileNavBtn {
       cursor: pointer;
+      display: none;
+
+      @media ${device.tablet_portrait} {
+        display: unset;
+      }
     }
   }
 `;

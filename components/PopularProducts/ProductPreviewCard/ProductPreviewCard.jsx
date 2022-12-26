@@ -4,19 +4,17 @@ import Image from "next/image";
 
 import { urlFor } from "../../../lib/client";
 
-import styles from "./ProductPreviewCard.module.scss";
-
 import { MdShoppingCart } from "../../ReactIcons/index";
-// import previewImg1 from "../../../assets/img/product-preview/preview-1.jpg";
+import { CardContainer } from "./ProductPreviewCard.styles";
 
 const ProductPreviewCard = ({ product }) => {
   const { thumbImage, salePrice, name, slug } = product;
 
   return (
-    <>
+    <CardContainer>
       <Link href={`/product/${slug.current}`}>
-        <div className={styles.PreviewCard}>
-          <div className={styles.PreviewCard__image}>
+        <div className="PreviewCard">
+          <div className="PreviewCard__image">
             <Image
               src={urlFor(thumbImage && thumbImage[0])}
               alt={name}
@@ -25,18 +23,18 @@ const ProductPreviewCard = ({ product }) => {
               objectFit="cover"
             />
 
-            <span className={styles.PreviewCard__viewmore}>View more</span>
+            <span className="PreviewCard__viewmore">View more</span>
           </div>
-          <h4 className={styles.PreviewCard__name}>{name}</h4>
-          <div className={styles.PreviewCard__shopping}>
-            <div className={styles.PreviewCard__icon_box}>
-              <MdShoppingCart className={styles.PreviewCard__icon} />
+          <h4 className="PreviewCard__name">{name}</h4>
+          <div className="PreviewCard__shopping">
+            <div className="PreviewCard__icon_box">
+              <MdShoppingCart className="PreviewCard__icon" />
             </div>
-            <span className={styles.PreviewCard__price}>HKD$ {salePrice}</span>
+            <span className="PreviewCard__price">HKD$ {salePrice}</span>
           </div>
         </div>
       </Link>
-    </>
+    </CardContainer>
   );
 };
 

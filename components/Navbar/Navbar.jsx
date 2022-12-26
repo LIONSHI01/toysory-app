@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import Router from "next/router";
 
+import { navbarItems } from "../../assets/constants";
 import {
   selectIsCartOpen,
   selectCartCount,
@@ -49,66 +50,61 @@ const Navbar = () => {
     <>
       <MobileSideBar showup={showMobileNav} setShowup={setShowMobileNav} />
       <NavbarContainer sticky={sticky}>
-        <div className="container">
-          <div className="navbar">
-            <div className="navbar__container">
-              <Link href="/">
-                <div className="navbar__logoBox">
-                  <Image
-                    src={logoImg}
-                    objectFit="cover"
-                    alt="toysory Logo"
-                    className="navbar__logo"
-                  />
-                </div>
-              </Link>
-              <div
-                className="navbar__mobileNavBtn"
-                onClick={() => setShowMobileNav((prev) => !prev)}
-              >
-                <FiMenu size={25} />
+        <div className="navbar">
+          <div className="navbar__container">
+            <div
+              className="navbar__mobileNavBtn"
+              onClick={() => setShowMobileNav((prev) => !prev)}
+            >
+              <FiMenu size={25} />
+            </div>
+            <Link href="/">
+              <div className="navbar__logoBox">
+                <Image
+                  src={logoImg}
+                  objectFit="cover"
+                  alt="toysory Logo"
+                  className="navbar__logo"
+                />
               </div>
-              <ul className="navbar__links">
-                <li>
-                  <Link href="/product">
-                    <a className="navbar__link">Markeplace</a>
+            </Link>
+
+            <ul className="navbar__links">
+              {navbarItems.map(({ title, url }) => (
+                <li key={title}>
+                  <Link href={url}>
+                    <a className="navbar__link">{title}</a>
                   </Link>
                 </li>
-                <li>
-                  <Link href="/account/favorite">
-                    <a className="navbar__link">Favorites</a>
-                  </Link>
-                </li>
-                <li>
-                  <div className="navbar__authentication">
-                    {status === "unauthenticated" || status === "loading" ? (
-                      <>
-                        <Link href="/auth/signin">
-                          <a className="navbar__login">Sign In</a>
-                        </Link>
-                        <Link href="/auth/register">
-                          <a className="navbar__register">Register</a>
-                        </Link>
-                      </>
-                    ) : (
-                      <div className="navbar__accountBox">
-                        <Link href="/account">
-                          <a className="navbar__account">Account</a>
-                        </Link>
-                        <a className="navbar__signout" onClick={signOutHandler}>
-                          Sign Out
-                        </a>
-                      </div>
-                    )}
-                  </div>
-                </li>
-                <li>
-                  <div className="navbar__cart" onClick={openCartHandler}>
-                    <BsHandbag className="navbar__icon" />
-                    <span className="navbar__cartQty">{cartCount}</span>
-                  </div>
-                </li>
-              </ul>
+              ))}
+
+              <li>
+                <div className="navbar__authentication">
+                  {status === "unauthenticated" || status === "loading" ? (
+                    <>
+                      <Link href="/auth/signin">
+                        <a className="navbar__login">Sign In</a>
+                      </Link>
+                      <Link href="/auth/register">
+                        <a className="navbar__register">Register</a>
+                      </Link>
+                    </>
+                  ) : (
+                    <div className="navbar__accountBox">
+                      <Link href="/account">
+                        <a className="navbar__account">Account</a>
+                      </Link>
+                      <a className="navbar__signout" onClick={signOutHandler}>
+                        Sign Out
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </li>
+            </ul>
+            <div className="navbar__cart" onClick={openCartHandler}>
+              <BsHandbag className="navbar__icon" />
+              <span className="navbar__cartQty">{cartCount}</span>
             </div>
           </div>
         </div>

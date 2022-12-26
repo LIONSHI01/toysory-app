@@ -1,4 +1,4 @@
-.ProductCard {
+/* .ProductCard {
   width: 32rem;
   display: flex;
   flex-direction: column;
@@ -146,9 +146,9 @@
 .ProductCard__shopping_btns {
   opacity: 0;
   visibility: hidden;
-}
+} */
 
-.dropdownBox {
+/* .dropdownBox {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -192,12 +192,11 @@
   width: 2rem;
   height: 2rem;
   color: var(--white);
-}
-
+} */
+/* 
 .dropdownBox__shopping_btns {
   opacity: 0;
   visibility: hidden;
-  /* display: none; */
 }
 
 .dropdownBox__add_to_cart {
@@ -247,4 +246,4 @@
 }
 .dropdownBox.active .dropdownBox__dropdown {
   background-color: var(--black-light-2);
-}
+} */

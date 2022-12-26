@@ -15,6 +15,7 @@ import CategoryBar from "./CategoryBar/CategoryBar";
 import MobileSideBar from "./MobileSideBar/MobileSideBar";
 import IconButton from "./IconButton/IconButton";
 import Overlay from "./Overlay/Overlay";
+import Button from "./Button/Button";
 
 export {
   Footer,
@@ -34,4 +35,5 @@ export {
   MobileSideBar,
   IconButton,
   Overlay,
+  Button,
 };
