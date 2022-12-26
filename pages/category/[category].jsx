@@ -1,13 +1,6 @@
 import React from "react";
 
 import { client } from "../../lib/client";
-// import { useSelector } from "react-redux";
-// import { selectCategories } from "../../store/product/product.selector";
-// import CategoryBar from "../../components/CategoryBar/CategoryBar";
-// import Header from "../../components/Header/Header";
-// import Hero from "../../components/Hero/Hero";
-// import Sidebar from "../../components/Navigation/sidebar/Sidebar";
-// import ProductList from "../../components/Product/ProductList/ProductList";
 
 import {
   CategoryBar,
@@ -15,10 +8,10 @@ import {
   Hero,
   Sidebar,
   ProductList,
+  Meta,
 } from "../../components/index";
 
-import classes from "./category.module.scss";
-import Meta from "../../components/Meta";
+import { CategoryPageContainer } from "../../styles/Category.styles";
 
 const Category = ({ products, category, categories }) => {
   return (
@@ -30,15 +23,19 @@ const Category = ({ products, category, categories }) => {
       />
       <Hero />
       <Header primary={category} secondary="Shopping" />
-      <div className="container">
-        <main className={classes.products__main}>
-          <Sidebar categories={categories} />
-          <div className={classes.products__content}>
-            <CategoryBar category={category} />
-            <ProductList products={products} />
-          </div>
-        </main>
-      </div>
+      <CategoryPageContainer>
+        <div className="container">
+          <main className="main">
+            <div className="sidebar-container">
+              <Sidebar categories={categories} />
+            </div>
+            <div className="content">
+              <CategoryBar category={category} />
+              <ProductList products={products} />
+            </div>
+          </main>
+        </div>
+      </CategoryPageContainer>
     </>
   );
 };

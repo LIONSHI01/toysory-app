@@ -1,21 +1,19 @@
 import React from "react";
 
-import classes from "./Header.module.scss";
+import { HeaderContainer } from "./Header.styles";
 
 const Header = ({ primary, secondary }) => {
   const displayPrimary = primary.replace("-", " ");
 
   return (
-    <header>
+    <HeaderContainer>
       <div className="container">
-        <div className={classes.heading}>
-          <h2 className={classes.heading__primary}>{displayPrimary}</h2>
-          <span
-            className={classes.heading__secondary}
-          >{`/-${secondary}-/`}</span>
+        <div className="heading">
+          <h2 className="heading__primary">{displayPrimary}</h2>
+          <span className="heading__secondary">{`/-${secondary}-/`}</span>
         </div>
       </div>
-    </header>
+    </HeaderContainer>
   );
 };
 

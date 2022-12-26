@@ -12,7 +12,7 @@ import {
 } from "../../components/index";
 
 import heroImg from "../../assets/img/hero-3.webp";
-// import classes from "./index.module.scss";
+
 import { ProductsPageContainer } from "../../styles/Products.styles";
 
 const Product = ({ products, categories }) => {

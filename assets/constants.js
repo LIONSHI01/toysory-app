@@ -12,7 +12,7 @@ export const navbarItems = [
   },
   {
     title: "favorites",
-    url: "/account/favorites",
+    url: "/account/favorite",
   },
 ];
 

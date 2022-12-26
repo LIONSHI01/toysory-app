@@ -5,14 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 import "react-loading-skeleton/dist/skeleton.css";
 import "../styles/globals.css";
-import "../styles/cart.css";
-import "../styles/CartBar.css";
-import "../styles/CartItem.css";
 import "../styles/nprogress.css";
-import "../styles/ProductCard.css";
-import "../styles/Hero.css";
-import "../styles/Navbar.css";
-import "../styles/InputForm.css";
 
 import { Layout } from "../components/index";
 

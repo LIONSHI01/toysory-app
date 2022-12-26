@@ -4,8 +4,8 @@ import { signIn } from "next-auth/react";
 import Router from "next/router";
 import Link from "next/link";
 
-import InputForm from "../../../components/InputForm/InputForm";
-import classes from "./index.module.scss";
+import { InputForm } from "../../../components";
+import { SigninPageContainer } from "../../../styles/Signin.styles";
 
 const INITIAL_FORM_FIELDS = {
   email: "",
@@ -37,48 +37,50 @@ const Login = () => {
   };
 
   return (
-    <main className={classes.login}>
-      <div className={classes.login__container}>
-        <div className={classes.login__top}>
-          <form className={classes.login__form} onSubmit={submithandler}>
-            <h1 className={classes.login__heading}>Have an account?</h1>
-            <InputForm
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={email}
-              onChange={onChangeHandler}
-            />
-            <InputForm
-              type="password"
-              placeholder="Password"
-              minLength="8"
-              name="password"
-              value={password}
-              onChange={onChangeHandler}
-            />
-            <button className={classes.login__submit} type="submit">
-              Log in
-            </button>
-          </form>
-          <div className={classes.login__links}>
-            <Link href="/auth/register">
-              <a className={classes.login__createAccount}>Create an account?</a>
-            </Link>
-            <Link href="/auth/forget">
-              <a className={classes.login__forget}>Forget Password</a>
-            </Link>
+    <SigninPageContainer>
+      <div className="login">
+        <div className="login__container">
+          <div className="login__top">
+            <form className="login__form" onSubmit={submithandler}>
+              <h1 className="login__heading">Have an account?</h1>
+              <InputForm
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={email}
+                onChange={onChangeHandler}
+              />
+              <InputForm
+                type="password"
+                placeholder="Password"
+                minLength="8"
+                name="password"
+                value={password}
+                onChange={onChangeHandler}
+              />
+              <button className="login__submit" type="submit">
+                Log in
+              </button>
+            </form>
+            <div className="login__links">
+              <Link href="/auth/register">
+                <a className="login__createAccount">Create an account?</a>
+              </Link>
+              {/* <Link href="/auth/forget">
+                <a className="login__forget">Forget Password</a>
+              </Link> */}
+            </div>
           </div>
-        </div>
-        <div className={classes.login__other_sign_in}>
-          <p className={classes.login__other_heading}>- Or Sign In With -</p>
-          <div className={classes.login__socials}>
-            <button className={classes.login__social_login}>Google</button>
-            <button className={classes.login__social_login}>Facebook</button>
-          </div>
+          {/* <div className="login__other_sign_in">
+            <p className="login__other_heading">- Or Sign In With -</p>
+            <div className="login__socials">
+              <button className="login__social_login">Google</button>
+              <button className="login__social_login">Facebook</button>
+            </div>
+          </div> */}
         </div>
       </div>
-    </main>
+    </SigninPageContainer>
   );
 };
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "./devices";
+import { device } from "../styles/devices";
 
 export const ProductDetailsPageContainer = styled.div`
   .container {
@@ -9,6 +9,7 @@ export const ProductDetailsPageContainer = styled.div`
   }
 
   .sidebar-container {
+    display: flex;
     @media ${device.tablet_portrait} {
       display: none;
     }
@@ -16,14 +17,13 @@ export const ProductDetailsPageContainer = styled.div`
 
   .product {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 4rem;
     margin: 5rem 0;
 
     &__main {
       width: 100%;
       display: flex;
-      gap: 4rem;
+      flex-direction: column;
     }
   }
 

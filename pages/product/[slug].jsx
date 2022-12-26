@@ -118,11 +118,11 @@ const ProductDetails = ({ product, categories }) => {
       <Header primary="Shopping" secondary="Product Details" />
       <ProductDetailsPageContainer>
         <div className="container">
-          <main className="product__main">
+          <main className="product">
             <div className="sidebar-container">
               <Sidebar categories={categories} />
             </div>
-            <section className="product">
+            <section className="product__main">
               <CategoryBar category={category} />
 
               <div className="intro">

@@ -1,13 +1,12 @@
 import { useDispatch } from "react-redux";
 
 import { client } from "../lib/client";
-
 import { setAllProducts } from "../store/product/product.action";
 import AboutBox from "../components/AboutBox/AboutBox";
 import PopularProducts from "../components/PopularProducts/PopulartProducts";
-import Hero from "../components/Hero/Hero";
 import HeroImg from "../assets/img/hero.jpg";
-import Meta from "../components/Meta";
+
+import { Meta, Hero } from "../components";
 
 const Home = ({ products }) => {
   const dispatch = useDispatch();
@@ -19,6 +18,7 @@ const Home = ({ products }) => {
       <main className="main">
         <Hero banner={HeroImg} size="big" />
         <AboutBox />
+
         <PopularProducts products={products} />
       </main>
     </>

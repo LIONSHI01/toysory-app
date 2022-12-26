@@ -5,8 +5,9 @@ import { toast } from "react-hot-toast";
 
 import { registerUser } from "../../../lib/authRequest";
 import InputForm from "../../../components/InputForm/InputForm";
+import bgImage from "../../../assets/img/signup-bg.jpg";
 
-import classes from "./index.module.scss";
+import { RegisterPageContainer } from "../../../styles/Register.styles";
 
 const INITIAL_FORM_FIELDS = {
   email: "",
@@ -36,58 +37,59 @@ const Login = () => {
       toast.success("Sign up successfully!", { style: { fontSize: "20px" } });
       window.location.assign("/auth/signin");
     }
-    // Router.replace("/");
   };
 
   return (
-    <main className={classes.signup}>
-      <div className={classes.signup__container}>
-        <div className={classes.signup__top}>
-          <form className={classes.signup__form} onSubmit={sumbitHandler}>
-            <h1 className={classes.signup__heading}>Create an account</h1>
-            <InputForm
-              type="email"
-              placeholder="Email"
-              required
-              name="email"
-              value={email}
-              onChange={onChangeHandler}
-            />
-            <InputForm
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-              minLength="8"
-              value={password}
-              onChange={onChangeHandler}
-            />
-            <InputForm
-              type="password"
-              name="passwordConfirm"
-              placeholder="Confirm Password"
-              required
-              minLength="8"
-              value={passwordConfirm}
-              onChange={onChangeHandler}
-            />
-            <button className={classes.signup__submit} type="submit">
-              Sign up
-            </button>
-          </form>
-          <Link href="/auth/login">
-            <a className={classes.signup__haveAccount}>Already have account?</a>
-          </Link>
-        </div>
-        <div className={classes.signup__other_sign_in}>
-          <p className={classes.signup__other_heading}>- Or Sign In With -</p>
-          <div className={classes.signup__socials}>
-            <button className={classes.signup__social_login}>Google</button>
-            <button className={classes.signup__social_login}>Facebook</button>
+    <RegisterPageContainer bgPhoto={bgImage}>
+      <div className="signup">
+        <div className="signup__container">
+          <div className="signup__top">
+            <form className="signup__form" onSubmit={sumbitHandler}>
+              <h1 className="signup__heading">Create an account</h1>
+              <InputForm
+                type="email"
+                placeholder="Email"
+                required
+                name="email"
+                value={email}
+                onChange={onChangeHandler}
+              />
+              <InputForm
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+                minLength="8"
+                value={password}
+                onChange={onChangeHandler}
+              />
+              <InputForm
+                type="password"
+                name="passwordConfirm"
+                placeholder="Confirm Password"
+                required
+                minLength="8"
+                value={passwordConfirm}
+                onChange={onChangeHandler}
+              />
+              <button className="signup__submit" type="submit">
+                Sign up
+              </button>
+            </form>
+            <Link href="/auth/login">
+              <a className="signup__haveAccount">Already have account?</a>
+            </Link>
           </div>
+          {/* <div className="signup__other_sign_in">
+            <p className="signup__other_heading">- Or Sign In With -</p>
+            <div className="signup__socials">
+              <button className="signup__social_login">Google</button>
+              <button className="signup__social_login">Facebook</button>
+            </div>
+          </div> */}
         </div>
       </div>
-    </main>
+    </RegisterPageContainer>
   );
 };
 

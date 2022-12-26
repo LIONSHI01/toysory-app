@@ -1,11 +1,13 @@
-.sidebar {
-  min-width: 25rem;
+import styled from "styled-components";
+// import { device } from "../../styles/devices";
 
+export const SidebarContainer = styled.aside`
+  min-width: 25rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 
-  &__heading {
+  .sidebar__heading {
     background-color: var(--blue-dark);
     padding: 1.2rem 1.5rem;
     font-size: var(--fs-x);
@@ -14,7 +16,7 @@
     text-transform: uppercase;
   }
 
-  &__category {
+  .sidebar__category {
     padding: 0.8rem 1.5rem;
     background-color: var(--grey-light-1);
     font-size: var(--fs-s);
@@ -26,4 +28,4 @@
       text-transform: uppercase;
     }
   }
-}
+`;

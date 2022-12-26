@@ -1,20 +1,21 @@
 import React from "react";
 import Link from "next/link";
 
-import classes from "./Sidebar.module.scss";
+// import classes from "./Sidebar.module.scss";
+import { SidebarContainer } from "./Sidebar.styles";
 
 const Sidebar = ({ categories }) => {
   return (
-    <aside className={classes.sidebar}>
-      <h3 className={classes.sidebar__heading}>Toy Stories</h3>
+    <SidebarContainer>
+      <h3 className="sidebar__heading">Toy Stories</h3>
       {categories?.map((category, i) => (
         <Link key={i} href={`/category/${category}`}>
-          <div className={classes.sidebar__category}>
+          <div className="sidebar__category">
             <h4>{category.replace("-", " ")}</h4>
           </div>
         </Link>
       ))}
-    </aside>
+    </SidebarContainer>
   );
 };
 

@@ -12,8 +12,9 @@ import {
 import { ImArrowLeft2, BsBagPlus } from "../../ReactIcons/index";
 
 import { setIsCartOpen } from "../../../store/cart/cart.action";
-import CartItem from "../CartItem";
+// import CartItem from "../CartItem/CartItem";
 import { CartBarContainer } from "./CartBar.styles";
+import { CartItem } from "../../index";
 
 const CartBar = () => {
   const disptach = useDispatch();

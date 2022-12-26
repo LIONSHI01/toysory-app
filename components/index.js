@@ -16,6 +16,7 @@ import MobileSideBar from "./MobileSideBar/MobileSideBar";
 import IconButton from "./IconButton/IconButton";
 import Overlay from "./Overlay/Overlay";
 import Button from "./Button/Button";
+import CartItem from "./Product/CartItem/CartItem";
 
 export {
   Footer,
@@ -36,4 +37,5 @@ export {
   IconButton,
   Overlay,
   Button,
+  CartItem,
 };
