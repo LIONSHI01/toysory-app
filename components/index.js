@@ -17,6 +17,7 @@ import IconButton from "./IconButton/IconButton";
 import Overlay from "./Overlay/Overlay";
 import Button from "./Button/Button";
 import CartItem from "./Product/CartItem/CartItem";
+import AuthorDisplayBlock from "./AuthorDisplayBlock";
 
 export {
   Footer,
@@ -38,4 +39,5 @@ export {
   Overlay,
   Button,
   CartItem,
+  AuthorDisplayBlock,
 };

@@ -3,6 +3,10 @@ import {
   BsGithub,
   ImFacebook,
   BsTwitter,
+  AiFillHome,
+  AiFillBehanceCircle,
+  AiFillInstagram,
+  FaPinterestP,
 } from "../components/ReactIcons";
 
 export const navbarItems = [
@@ -26,10 +30,25 @@ export const footerAboutLinks = [
 export const socialLinks = [
   { title: "homePage", link: "/", icon: <RiEarthFill /> },
   {
+    title: "instagram",
+    link: "/",
+    icon: <AiFillInstagram />,
+  },
+  { title: "facebook", link: "/", icon: <ImFacebook /> },
+  { title: "twitter", link: "/", icon: <BsTwitter /> },
+  { title: "pinterest", link: "/", icon: <FaPinterestP /> },
+];
+
+export const AUTHOR_INFO = [
+  { title: "homePage", link: "https://lionshi.io", icon: <AiFillHome /> },
+  {
     title: "github",
     link: "https://github.com/LIONSHI01",
     icon: <BsGithub />,
   },
-  { title: "facebook", link: "/", icon: <ImFacebook /> },
-  { title: "twitter", link: "/", icon: <BsTwitter /> },
+  {
+    title: "behance",
+    link: "https://www.behance.net/lionc",
+    icon: <AiFillBehanceCircle />,
+  },
 ];

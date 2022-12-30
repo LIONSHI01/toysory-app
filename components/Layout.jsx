@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { setCartItemsFromLocalStorage } from "../store/cart/cart.action";
 import { setFavItemsFromLocalStorage } from "../store/user/user.action";
 
-import { Footer, Meta, Navbar, CartBar, MobileSideBar } from "./index";
+import { Footer, Meta, Navbar, CartBar, AuthorDisplayBlock } from "./index";
 
 const Layout = ({ children }) => {
   // STATES
@@ -42,6 +42,7 @@ const Layout = ({ children }) => {
       <Navbar />
       {children}
       <Footer />
+      <AuthorDisplayBlock />
     </>
   );
 };

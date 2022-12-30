@@ -23,8 +23,10 @@ import {
   AiOutlineLeft,
   AiOutlineRight,
   AiOutlineFileDone,
+  AiFillHome,
+  AiFillBehanceCircle,
 } from "react-icons/ai";
-import { FaAngleDown, FaShippingFast } from "react-icons/fa";
+import { FaAngleDown, FaShippingFast, FaPinterestP } from "react-icons/fa";
 import { GiMagnifyingGlass } from "react-icons/gi";
 import { SiCashapp, SiMinutemailer } from "react-icons/si";
 import { IoMdClose } from "react-icons/io";
@@ -60,4 +62,7 @@ export {
   SiMinutemailer,
   RiEarthFill,
   BsGithub,
+  AiFillHome,
+  AiFillBehanceCircle,
+  FaPinterestP,
 };
