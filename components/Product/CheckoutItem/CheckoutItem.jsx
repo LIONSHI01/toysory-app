@@ -57,7 +57,6 @@ const CheckoutItem = ({ product }) => {
         </span>
         <span className="cartItem__unitPrice">{`HK$ ${salePrice}`}</span>
         <div className="cartItem__qty_box">
-          <span>Amount</span>
           <div className="cartItem__qty_box__adjuster">
             <span className="cartItem__minus" onClick={minusFromCartHandler}>
               <AiOutlineMinus className="cartItem__amountIcon" />

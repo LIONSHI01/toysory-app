@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { device } from "../../../styles/devices";
 
 export const ItemContainer = styled.div`
@@ -39,6 +39,10 @@ export const ItemContainer = styled.div`
 
       gap: 2rem;
       align-items: center;
+
+      @media ${device.mobileL} {
+        gap: 0.5rem;
+      }
     }
 
     &__name {
@@ -75,7 +79,12 @@ export const ItemContainer = styled.div`
 
       &__adjuster {
         display: flex;
+        align-items: center;
         gap: 1rem;
+
+        @media ${device.mobileL} {
+          gap: 0.5rem;
+        }
       }
 
       @media ${device.tablet} {

@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 const showupStyles = css`
+  -webkit-transform: translateX(0);
   transform: translateX(0);
   opacity: 1;
 `;
@@ -23,6 +24,7 @@ export const SidebarContainer = styled.div`
 
   /* Hide Sidebar */
   opacity: 0;
+  -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
 
   ${(props) => props.showup && showupStyles}

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import { device } from "../../styles/devices";
+
 
 export const SidebarContainer = styled.aside`
   min-width: 25rem;

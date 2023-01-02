@@ -165,7 +165,6 @@ const ProductDetails = ({ product, categories }) => {
                   )}
 
                   <div className="intro__amount">
-                    <span>Amount :</span>
                     <span className="intro__minus" onClick={minusQty}>
                       <AiOutlineMinus className="intro__amountIcon" />
                     </span>

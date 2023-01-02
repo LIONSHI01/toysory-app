@@ -28,7 +28,9 @@ const Product = ({ products, categories }) => {
         <Header primary="All Products" secondary="Shopping" />
         <div className="container">
           <main className="products__main">
-            <Sidebar categories={categories} />
+            <div className="products__sidebarContainer">
+              <Sidebar categories={categories} />
+            </div>
             <div className="products__content">
               <CategoryBar category="All Products" />
               <ProductList products={products} />

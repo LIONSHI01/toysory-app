@@ -94,5 +94,24 @@ export const CartBarContainer = styled.div`
     .cartbar__checkout-btn:hover {
       background-color: var(--blue-dark);
     }
+
+    .cartItem__emptyBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      gap: 4rem;
+    }
+
+    .cartItem__emptyBox-icon {
+      width: 10rem;
+      height: 10rem;
+      color: var(--red);
+    }
+    .cartItem__emptyBox-text {
+      font-size: var(--fs-xl);
+      text-transform: uppercase;
+    }
   }
 `;
