@@ -6,17 +6,7 @@ const handler = async (req, res) => {
   if (req.method !== "POST") return;
 
   try {
-    // console.log(req.body);
     const { email, password, favorites } = req.body;
-
-    // console.log(email, password);
-    // VALIDATE INPUT
-    // if (!email || !email.include("@") || !password || !password.length > 7) {
-    //   res.status(422).json({
-    //     message: "Invalid input email or password, please try again.",
-    //   });
-    //   return;
-    // }
 
     // CONNECT MONGO
     await connectMongo();
@@ -47,7 +37,6 @@ const handler = async (req, res) => {
       },
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       message: error,
     });

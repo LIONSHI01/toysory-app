@@ -53,7 +53,7 @@ export const getStaticPaths = async () => {
       category: category,
     },
   }));
-  // console.log(paths);
+
   return {
     paths,
     fallback: "blocking",

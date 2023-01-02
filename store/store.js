@@ -7,9 +7,9 @@ import {
 import logger from "redux-logger";
 import { rootReducer } from "./root-reducer";
 
-const middlewares = [process.env.NODE_ENV !== "production" && logger].filter(
-  Boolean
-);
+const middlewares = [
+  process.env.NEXT_PUBLIC_NODE_ENV !== "production" && logger,
+].filter(Boolean);
 
 const composeEnhancers = compose(applyMiddleware(...middlewares));
 

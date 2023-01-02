@@ -10,7 +10,7 @@ import { SidebarContainer, UserInfoBox } from "./MobileSideBar.styles";
 
 const MobileSideBar = ({ showup = true, setShowup }) => {
   const { status, data: session } = useSession();
-  console.log(session);
+  
 
   const username =
     session?.user?.email?.split("@")[0].length <= 10
